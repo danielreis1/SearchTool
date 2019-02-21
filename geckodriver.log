@@ -1,0 +1,917 @@
+1550599393467	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.a7k8g9dFuMhT"
+1550599401565	Marionette	INFO	Listening on port 37557
+1550599401607	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://api.impresa.pt/trackercookie/xdomain_cookie.html#%7B%22namespace%22%3A%22xdsc%22%2C%22window_origin%22%3A%22https%3A%2F%2Fvolantesic.pt%22%2C%22iframe_origin%22%3A%22https%3A%2F%2Fapi.impresa.pt%2Ftrackercookie%22%2C%22debug%22%3Afalse%7D, line 56: TypeError: right-hand side of 'in' should be an object, got null
+[GFX1-]: Receive IPC close with reason=AbnormalShutdown
+[Child 3375, Chrome_ChildThread] WARNING: pipe error (3): Connection reset by peer: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+1550599416625	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8a9Dyo45xk79"
+1550599423026	Marionette	INFO	Listening on port 45317
+1550599423063	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://api.impresa.pt/trackercookie/xdomain_cookie.html#%7B%22namespace%22%3A%22xdsc%22%2C%22window_origin%22%3A%22https%3A%2F%2Fvolantesic.pt%22%2C%22iframe_origin%22%3A%22https%3A%2F%2Fapi.impresa.pt%2Ftrackercookie%22%2C%22debug%22%3Afalse%7D, line 56: TypeError: right-hand side of 'in' should be an object, got null
+IPDL protocol error: Handler returned error code!
+
+###!!! [Parent][DispatchAsyncMessage] Error: PLayerTransaction::Msg_ReleaseLayer Processing error: message was deserialized, but the handler returned false (indicating failure)
+
+console.log: Accessibility service init or shutdown observer does not exist.
+
+###!!! [Child][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550601460426	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Is7BNPEOvGG1"
+1550601466818	Marionette	INFO	Listening on port 35451
+1550601466861	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+console.log: Accessibility service init or shutdown observer does not exist.
+[Child 4058, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 4058, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 4058, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550601585983	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.Pn17aCcsgMTB"
+1550601593587	Marionette	INFO	Listening on port 39691
+1550601593729	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://api.impresa.pt/trackercookie/xdomain_cookie.html#%7B%22namespace%22%3A%22xdsc%22%2C%22window_origin%22%3A%22https%3A%2F%2Fvolantesic.pt%22%2C%22iframe_origin%22%3A%22https%3A%2F%2Fapi.impresa.pt%2Ftrackercookie%22%2C%22debug%22%3Afalse%7D, line 56: TypeError: right-hand side of 'in' should be an object, got null
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550608775285	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.eghNJx3mpMbv"
+1550608784956	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550608784966	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550608785799	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550608785800	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 41ms; not stored in cache (too small to benefit))
+1550608788248	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550608789861	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550608789871	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550608790100	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550608804945	Marionette	INFO	Listening on port 35933
+1550608805047	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550608896961	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.qpIfJD4iitkW"
+1550608903966	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550608903975	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550608906271	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550608906272	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550608907772	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550608908106	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550608908122	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550608908589	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+]]
+1550608921965	Marionette	INFO	Listening on port 35629
+1550608922044	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550609358331	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.3By2RiOWoeZG"
+*** You are running in headless mode.
+1550609367653	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550609367661	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550609368581	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550609368582	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550609369690	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550609370280	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550609370299	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550609371810	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+]]
+1550609385327	Marionette	INFO	Listening on port 35145
+1550609385483	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7041, Gecko_IOThread] WARNING: Failed to launch tab subprocess: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/glue/GeckoChildProcessHost.cpp, line 557
+[Parent 7041, Gecko_IOThread] WARNING: pipe error (90): Connection reset by peer: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550610240530	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.CDIy8lEyv1hR"
+*** You are running in headless mode.
+1550610267264	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550610267273	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550610268096	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550610268097	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 100ms; not stored in cache (too small to benefit))
+1550610270246	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550610275682	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550610275691	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550610275918	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+]]
+1550610286953	Marionette	INFO	Listening on port 41405
+1550610287329	Marionette	WARN	TLS certificate errors will be ignored for this session
+[Parent 7376, Gecko_IOThread] WARNING: Failed to launch tab subprocess: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/glue/GeckoChildProcessHost.cpp, line 557
+[Parent 7376, Gecko_IOThread] WARNING: pipe error (91): Connection reset by peer: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 353
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550619291547	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.WjupFM884XJP"
+*** You are running in headless mode.
+1550619304851	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550619304861	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550619306919	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550619306921	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 22ms; not stored in cache (too small to benefit))
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550619309333	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550619309566	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550619309575	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550619309924	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550619317060	Marionette	INFO	Listening on port 39915
+[Child 9144, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9144, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: pipe error: Broken pipe: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/ipc_channel_posix.cc, line 709
+[Child 9228, Chrome_ChildThread] WARNING: FileDescriptorSet destroyed with unconsumed descriptors: file /build/firefox-esr-4oYyar/firefox-esr-60.4.0esr/ipc/chromium/src/chrome/common/file_descriptor_set_posix.cc, line 22
+1550622605996	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.2s3crLkv5jSu"
+*** You are running in headless mode.
+1550622613802	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550622613809	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550622614836	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550622614836	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+1550622615257	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 32ms; not stored in cache (too small to benefit))
+1550622616243	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550622616251	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550622616389	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550622624296	Marionette	INFO	Listening on port 37899
+1550622626469	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+1550622785280	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.l7u70SYslw7h"
+*** You are running in headless mode.
+1550622786345	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550622786352	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550622786963	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550622786963	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+1550622787413	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550622788374	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550622788383	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550622788521	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550622795806	Marionette	INFO	Listening on port 35541
+1550622795907	Marionette	WARN	TLS certificate errors will be ignored for this session
+Extension error: TypeError: topFrame is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js 35
+[[Exception stack
+onBeforeHeadersReceivedHandler@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js:35:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+fire@resource://gre/modules/ExtensionChild.jsm:881:28
+receiveMessage@resource://gre/modules/ExtensionChild.jsm:884:38
+_callHandlers/<@resource://gre/modules/MessageChannel.jsm:864:17
+_callHandlers@resource://gre/modules/MessageChannel.jsm:863:14
+_handleMessage/deferred.promise<@resource://gre/modules/MessageChannel.jsm:938:7
+_handleMessage@resource://gre/modules/MessageChannel.jsm:935:24
+receiveMessage/<@resource://gre/modules/MessageChannel.jsm:208:9
+receiveMessage@resource://gre/modules/MessageChannel.jsm:201:5
+]]
+Extension error: TypeError: topFrame is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js 35
+[[Exception stack
+onBeforeHeadersReceivedHandler@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js:35:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+fire@resource://gre/modules/ExtensionChild.jsm:881:28
+receiveMessage@resource://gre/modules/ExtensionChild.jsm:884:38
+_callHandlers/<@resource://gre/modules/MessageChannel.jsm:864:17
+_callHandlers@resource://gre/modules/MessageChannel.jsm:863:14
+_handleMessage/deferred.promise<@resource://gre/modules/MessageChannel.jsm:938:7
+_handleMessage@resource://gre/modules/MessageChannel.jsm:935:24
+receiveMessage/<@resource://gre/modules/MessageChannel.jsm:208:9
+receiveMessage@resource://gre/modules/MessageChannel.jsm:201:5
+]]
+Extension error: TypeError: topFrame is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js 35
+[[Exception stack
+onBeforeHeadersReceivedHandler@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js:35:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+fire@resource://gre/modules/ExtensionChild.jsm:881:28
+receiveMessage@resource://gre/modules/ExtensionChild.jsm:884:38
+_callHandlers/<@resource://gre/modules/MessageChannel.jsm:864:17
+_callHandlers@resource://gre/modules/MessageChannel.jsm:863:14
+_handleMessage/deferred.promise<@resource://gre/modules/MessageChannel.jsm:938:7
+_handleMessage@resource://gre/modules/MessageChannel.jsm:935:24
+receiveMessage/<@resource://gre/modules/MessageChannel.jsm:208:9
+receiveMessage@resource://gre/modules/MessageChannel.jsm:201:5
+]]
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+Extension error: TypeError: topFrame is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js 35
+[[Exception stack
+onBeforeHeadersReceivedHandler@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/csp.js:35:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+fire@resource://gre/modules/ExtensionChild.jsm:881:28
+receiveMessage@resource://gre/modules/ExtensionChild.jsm:884:38
+_callHandlers/<@resource://gre/modules/MessageChannel.jsm:864:17
+_callHandlers@resource://gre/modules/MessageChannel.jsm:863:14
+_handleMessage/deferred.promise<@resource://gre/modules/MessageChannel.jsm:938:7
+_handleMessage@resource://gre/modules/MessageChannel.jsm:935:24
+receiveMessage/<@resource://gre/modules/MessageChannel.jsm:208:9
+receiveMessage@resource://gre/modules/MessageChannel.jsm:201:5
+]]
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+console.log: Accessibility service init or shutdown observer does not exist.
+console.log: Accessibility service init or shutdown observer does not exist.
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+
+###!!! [Parent][RunMessage] Error: Channel closing: too late to send/recv, messages will be lost
+
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Can't use WebGL in headless mode (https://bugzil.la/1375585).
+JavaScript warning: https://d2ho1n52p59mwv.cloudfront.net/?pnohd=753486, line 32: Error: WebGL warning: Failed to create WebGL context: WebGL creation failed: 
+* Can't use WebGL in headless mode (https://bugzil.la/1375585).
+
+###!!! [Parent][MessageChannel] Error: (msgtype=0x160080,name=PBrowser::Msg_Destroy) Closed channel: cannot send/recv
+
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550674627364	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8ZXVZChBnQoG"
+1550674633945	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674633956	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674636956	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550674636958	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550674642406	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+console.log: Accessibility service init or shutdown observer does not exist.
+1550674644488	addons.xpi	WARN	Exception running bootstrap method shutdown on activity-stream@mozilla.org: [Exception... "Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIObserverService.removeObserver]"  nsresult: "0x80004005 (NS_ERROR_FAILURE)"  location: "JS frame :: resource://activity-stream/lib/SnippetsFeed.jsm :: uninit :: line 185"  data: no] Stack trace: uninit()@resource://activity-stream/lib/SnippetsFeed.jsm:185
+onAction()@resource://activity-stream/lib/SnippetsFeed.jsm:201
+_middleware/</<()@resource://activity-stream/lib/Store.jsm:49
+Store/this[method]()@resource://activity-stream/lib/Store.jsm:28
+uninit()@resource://activity-stream/lib/Store.jsm:151
+uninit()@resource://activity-stream/lib/ActivityStream.jsm:300
+uninit()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox-esr/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:73
+shutdown()@resource://gre/modules/addons/XPIProvider.jsm -> jar:file:///usr/lib/firefox-esr/browser/features/activity-stream@mozilla.org.xpi!/bootstrap.js:169
+callBootstrapMethod()@resource://gre/modules/addons/XPIProvider.jsm:4446
+observe()@resource://gre/modules/addons/XPIProvider.jsm:2293
+syncLoadManifestFromFile()@resource://gre/modules/addons/XPIProvider.jsm:948
+updateMetadata()@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259
+processFileChanges()@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485
+getNewSideloads()@resource://gre/modules/addons/XPIProvider.jsm:3365
+JavaScript error: jar:file:///usr/lib/firefox-esr/browser/omni.ja!/components/nsBrowserGlue.js, line 1028: NS_ERROR_FAILURE: Component returned failure code: 0x80004005 (NS_ERROR_FAILURE) [nsIIdleService.removeIdleObserver]
+1550674644533	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674644550	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674644899	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550674649047	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+removeAddonMetadata@XPIProviderUtils.js:937:5
+updateAddonMetadata@XPIProviderUtils.js:917:5
+updateMetadata@XPIProviderUtils.js:1290:12
+processFileChanges@XPIProviderUtils.js:1485:26
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649053	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+addAddonMetadata@XPIProviderUtils.js:900:5
+updateAddonMetadata@XPIProviderUtils.js:926:12
+updateMetadata@XPIProviderUtils.js:1290:12
+processFileChanges@XPIProviderUtils.js:1485:26
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649086	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649091	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649093	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649094	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649095	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649096	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649097	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649098	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649100	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649102	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649105	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649106	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+makeAddonVisible@XPIProviderUtils.js:968:5
+processFileChanges@XPIProviderUtils.js:1649:7
+getNewSideloads@XPIProvider.jsm:3365:7
+1550674649109	addons.xpi-utils	WARN	Error: XPI database modified after shutdown began (resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:323:17) JS Stack trace: saveChanges@XPIProviderUtils.js:323:17
+processFileChanges@XPIProviderUtils.js:1705:5
+getNewSideloads@XPIProvider.jsm:3365:7
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550674650129	Marionette	INFO	Listening on port 33689
+1550674650257	Marionette	WARN	TLS certificate errors will be ignored for this session
+*** UTM:SVC TimerManager:registerTimer called after profile-before-change notification. Ignoring timer registration for id: telemetry_modules_ping
+1550674678358	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.gJfiYbTSTCOK"
+1550674682102	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674682121	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674683094	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550674683096	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 3ms; not stored in cache (too small to benefit))
+1550674685880	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550674691493	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674691504	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674691936	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550674701585	Marionette	INFO	Listening on port 38377
+1550674701643	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/vender/preco/?ID=88279, line 3260: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+1550674834311	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.q0wdIRHWx1Cx"
+1550674844529	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674844540	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674845589	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550674845590	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550674846911	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550674847418	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550674847429	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550674848112	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550674854117	Marionette	INFO	Listening on port 43265
+1550674865068	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+console.log: Accessibility service init or shutdown observer does not exist.
+1550675802131	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.AXzDmUMKpGd2"
+1550675816143	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550675816158	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550675817140	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550675817141	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550675819054	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550675823564	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550675823577	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550675823807	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550675831932	Marionette	INFO	Listening on port 39125
+1550675832052	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: https://volantesic.pt
+console.warn: LoginRecipes: getRecipes: falling back to a synchronous message for: https://volantesic.pt
+console.log: Accessibility service init or shutdown observer does not exist.
+1550677873293	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.fek0eKOTbyCC"
+1550677885010	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550677885024	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550677886186	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550677886187	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550677887353	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550677887989	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550677888002	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550677889342	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550677902730	Marionette	INFO	Listening on port 33011
+1550677902983	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550678119940	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.MVVxjitUpmD3"
+1550678130186	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678130200	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678131117	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550678131119	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550678132343	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550678137296	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678137319	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678137611	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550678147624	Marionette	INFO	Listening on port 41203
+1550678147849	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+1550678304945	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.W1n3INM7PHjf"
+1550678322328	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678322342	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678323396	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550678323397	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550678325618	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550678332354	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678332387	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678333126	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550678347668	Marionette	INFO	Listening on port 39999
+1550678349811	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550678544176	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.N0ARUMPMp6M3"
+1550678564236	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678564254	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678566512	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550678566514	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 16ms; not stored in cache (too small to benefit))
+1550678568283	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550678575125	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550678575141	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550678575667	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550678575982	Marionette	INFO	Listening on port 46123
+1550678587962	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+1550679254846	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.SWAXZ8sNBZrs"
+1550679258522	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550679258536	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550679259536	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550679259538	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550679261915	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550679263876	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550679263905	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550679264262	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550679279524	Marionette	INFO	Listening on port 45701
+1550679279632	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550679710761	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.8U8WJKyHQqFJ"
+1550679715282	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550679715302	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550679716391	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550679716394	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 6ms; not stored in cache (too small to benefit))
+1550679718716	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550679732578	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550679732606	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550679733052	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550679748736	Marionette	INFO	Listening on port 45389
+1550679748948	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550680127600	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.bij4a8eFgkof"
+1550680132626	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680132649	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680133672	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550680133674	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550680135932	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680143384	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680143406	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680144289	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680156808	Marionette	INFO	Listening on port 41903
+1550680156852	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550680478292	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.f8avyko9x9a1"
+1550680482463	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680482487	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680483682	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550680483685	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550680486098	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680493975	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680493993	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680494420	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680507738	Marionette	INFO	Listening on port 45025
+1550680507939	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550680627236	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.fMMA7cWgo5ZE"
+1550680632155	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680632194	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680633338	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550680633348	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 2ms; not stored in cache (too small to benefit))
+1550680635631	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680643500	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680643518	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680644025	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550680644304	Marionette	INFO	Listening on port 33723
+1550680656839	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550680986300	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.L5HNysG2cwuY"
+1550680993812	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550680993834	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550680996064	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550680996065	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 7ms; not stored in cache (too small to benefit))
+1550680999630	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550681007716	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550681007737	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550681008287	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550681023895	Marionette	INFO	Listening on port 43833
+1550681024010	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550681604468	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.XyuU464GCqeI"
+*** You are running in headless mode.
+1550681610200	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550681610245	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550681612270	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550681612273	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 3ms; not stored in cache (too small to benefit))
+1550681617206	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550681627017	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550681627097	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550681627601	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550681642407	Marionette	INFO	Listening on port 41895
+1550681643374	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2385: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3204: TypeError: sas.call is not a function
+JavaScript error: https://display.ugc.bazaarvoice.com/static/kbb-pt/pt_PT/bvapi.js, line 1: SyntaxError: expected expression, got '<'
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 87: ReferenceError: $BV is not defined
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 2478: TypeError: sas.call is not a function
+JavaScript error: https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279, line 3294: TypeError: sas.call is not a function
+console.log: Accessibility service init or shutdown observer does not exist.
+1550683389343	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-headless" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.CRzc8VX5iGKR"

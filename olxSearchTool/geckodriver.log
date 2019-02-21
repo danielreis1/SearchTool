@@ -1,0 +1,202 @@
+1550709078658	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.JnkCiLZXXNJ9"
+1550709088037	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550709088045	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550709089305	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550709089306	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550709090366	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550709090645	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550709090653	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550709091067	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550709102254	Marionette	INFO	Listening on port 33217
+1550709102997	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/WebRequestContent.js, line 118: TypeError: window is null
+WebGL(0x7f4ec8fa9800)::ForceLoseContext
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js, line 540: TypeError: document.documentElement is null
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/ext/background.js, line 0: Error: page is undefined
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+console.log: Accessibility service init or shutdown observer does not exist.
+1550710947229	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.H9tem6ySbvIA"
+1550710961748	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550710961781	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550710962790	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550710962791	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550710963763	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550710966958	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550710966967	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550710967134	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550710972432	Marionette	INFO	Listening on port 45887
+1550710972503	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/WebRequestContent.js, line 118: TypeError: window is null
+WebGL(0x7f4ddbce5000)::ForceLoseContext
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+1550711202960	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.oMQbX3H0Y25F"
+1550711207630	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711207638	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711208364	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550711208365	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 1ms; not stored in cache (too small to benefit))
+1550711209158	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550711209396	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711209412	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550711209871	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+]]
+1550711221325	Marionette	INFO	Listening on port 41259
+1550711221408	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/WebRequestContent.js, line 118: TypeError: window is null
+WebGL(0x7f69e2b89000)::ForceLoseContext
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+console.log: Accessibility service init or shutdown observer does not exist.
+1550711424872	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.DMcemCnaarKz"
+1550711443077	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711443128	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711444560	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550711444560	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+Extension error: TypeError: response is undefined moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js 870
+[[Exception stack
+apply/<@moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.preload.js:870:1
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/</<@resource://gre/modules/ExtensionCommon.jsm:517:15
+withLastError@resource://gre/modules/ExtensionCommon.jsm:441:14
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:509:11
+]]
+JavaScript error: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/include.postload.js, line 766: Error: Could not establish connection. Receiving end does not exist.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 21ms; not stored in cache (too small to benefit))
+1550711446342	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550711449671	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711449680	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711449847	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550711455748	Marionette	INFO	Listening on port 34765
+1550711455792	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/WebRequestContent.js, line 118: TypeError: window is null
+WebGL(0x7f6d066aa800)::ForceLoseContext
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+1550711588471	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.68HtgBHWRiwD"
+1550711603215	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711603223	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711605076	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550711605077	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 9ms; not stored in cache (too small to benefit))
+1550711606852	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+1550711607090	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711607098	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550711607518	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550711621321	Marionette	INFO	Listening on port 45503
+1550711622945	Marionette	WARN	TLS certificate errors will be ignored for this session
+JavaScript error: resource://gre/modules/WebRequestContent.js, line 118: TypeError: window is null
+WebGL(0x7f440ed93800)::ForceLoseContext
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+JavaScript warning: https://static-olxeu.akamaized.net/static/olxpt/packed/swb876d6c57d1154ed200bf57a7f31c222.js, line 1: unreachable code after return statement
+1550711747446	mozrunner::runner	INFO	Running command: "/usr/bin/firefox" "-marionette" "-foreground" "-no-remote" "-profile" "/tmp/rust_mozprofile.yI2uuHFFyQA9"
+1550711764338	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711764346	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Loading extension '{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711766390	addons.webextension.jid1-NIfFY2CA8fy1tg@jetpack	WARN	Please specify whether you want browser_style or not in your browser_action options.
+1550711766391	addons.webextension.{d10d0bf8-f5b5-c8b4-a8b2-2b9879e08c5d}	WARN	Please specify whether you want browser_style or not in your browser_action options.
+JavaScript error: resource://gre/modules/ExtensionContent.jsm, line 489: TypeError: Argument 1 of PrecompiledScript.executeInGlobal is not an object.
+JavaScript warning: moz-extension://f10ecd6b-3bf4-47a6-a737-2e2deb8e8d4d/lib/adblockplus.js, line 0: Successfully compiled asm.js code (total compilation time 60ms; not stored in cache (too small to benefit))
+1550711771838	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+Extension error: TypeError: getSettings(...) is undefined moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js 956
+[[Exception stack
+processTab@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:956:22
+getCurrentTabInfo/<@moz-extension://37fdf8f7-fb4a-446b-ae34-49bc43112557/background.js:1003:7
+Current stack
+applySafeWithoutClone@resource://gre/modules/ExtensionCommon.jsm:306:133
+wrapPromise/<@resource://gre/modules/ExtensionCommon.jsm:501:13
+syncLoadManifestFromFile@resource://gre/modules/addons/XPIProvider.jsm:948:3
+updateMetadata@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1259:21
+processFileChanges@resource://gre/modules/addons/XPIProvider.jsm -> resource://gre/modules/addons/XPIProviderUtils.js:1485:26
+getNewSideloads@resource://gre/modules/addons/XPIProvider.jsm:3365:7
+]]
+1550711773335	Marionette	INFO	Listening on port 37249
+1550711777656	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing background.persistent: Event pages are not currently supported. This will run as a persistent background page.
+1550711779281	addons.webextension.<unknown>	WARN	Loading extension 'null': Reading manifest: Error processing storage: An unexpected property was found in the WebExtension manifest.
+1550711780282	addons.xpi	WARN	Please specify whether you want browser_style or not in your options_ui options.
+1550711780293	Marionette	WARN	TLS certificate errors will be ignored for this session
