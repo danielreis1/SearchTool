@@ -143,7 +143,12 @@ def pickle_load():
 
 
 def log_to_error_file(error):
-    file_txt = 'textFiles/last_execution_errors_log_olx'
+    file = 'last_execution_errors_log_olx'
+    log_error_to_file(file, error)
+
+
+def log_error_to_file(file, error):
+    file_txt = 'textFiles/' + file
     write_to_file_replace(file_txt, error)
 
 
