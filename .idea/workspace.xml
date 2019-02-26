@@ -3,9 +3,17 @@
   <component name="BookmarkManager">
     <bookmark url="file://$PROJECT_DIR$/olxSearchTool/carSearch.py" line="165" />
     <bookmark url="file://$PROJECT_DIR$/olxSearchTool/carSearch.py" line="270" />
+    <bookmark url="file://$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py" line="118" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50ce52c4-c0ad-487a-b9d2-a760b8228217" name="Default Changelist" comment="" />
+    <list default="true" id="50ce52c4-c0ad-487a-b9d2-a760b8228217" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/olxSearchTool/brands_and_models" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/olxSearchTool/brands_and_models_in_text_format" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py" beforeDir="false" afterPath="$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/olxSearchTool/last_execution_errors_log" beforeDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,8 +28,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/olxSearchTool/carSearch.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="355">
-              <caret line="249" column="31" lean-forward="true" selection-start-line="249" selection-start-column="31" selection-end-line="249" selection-end-column="49" />
+            <state relative-caret-position="3885">
+              <caret line="270" column="55" selection-start-line="270" selection-start-column="55" selection-end-line="270" selection-end-column="55" />
               <folding>
                 <element signature="e#0#15#0" expanded="true" />
               </folding>
@@ -32,10 +40,10 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="205">
-              <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+            <state relative-caret-position="270">
+              <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
               <folding>
-                <element signature="e#0#15#0" expanded="true" />
+                <element signature="e#0#29#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -52,22 +60,49 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>get_elements_standvirtual</find>
-      <find>get_featires_olx</find>
-      <find>html</find>
       <find>soup2</find>
       <find>get_features</find>
-      <find>soup</find>
       <find>get_dest</find>
       <find>brand</find>
       <find>EC.ele</find>
       <find>css</find>
+      <find>soup</find>
+      <find>Soup</find>
+      <find>element</find>
+      <find>wait</find>
+      <find>css_se</find>
+      <find>press_dropdown_menu_button</find>
+      <find>click_brand</find>
+      <find>#</find>
+      <find>find_a</find>
+      <find>beaut</find>
+      <find>click_model</find>
+      <find>\</find>
+      <find>todo</find>
+      <find>brands_model_to_text_file</find>
+      <find>wait = WebDriverWait(browser, 10)</find>
+      <find>url</find>
+      <find>get_all_models_from_all_brands</find>
+      <find>get_all_brands</find>
+      <find>select_brand_from_dropdown_menu</find>
+      <find>get_models</find>
+      <find>log_to_error_file</find>
+      <find>click_models</find>
+      <find>try</find>
+      <find>brands_and_models</find>
     </findStrings>
     <replaceStrings>
       <replace>get_features_standvirtual</replace>
       <replace>get_features_olx</replace>
       <replace>html</replace>
+      <replace>click_brand</replace>
+      <replace>click_brands</replace>
+      <replace>save_brands_and_models</replace>
+      <replace>wait = WebDriverWait(browser, 15)</replace>
     </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -76,6 +111,7 @@
         <option value="$PROJECT_DIR$/carSearch.py" />
         <option value="$PROJECT_DIR$/findAllBrands&amp;Models.py" />
         <option value="$PROJECT_DIR$/searchTool/findAllBrands&amp;Models.py" />
+        <option value="$PROJECT_DIR$/olxSearchTool/carSearch.py" />
         <option value="$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py" />
       </list>
     </option>
@@ -157,11 +193,27 @@
       <workItem from="1550674242720" duration="3925000" />
       <workItem from="1550679182014" duration="6587000" />
       <workItem from="1550702785119" duration="1857000" />
+      <workItem from="1550751809130" duration="7414000" />
+      <workItem from="1550786409574" duration="5400000" />
+      <workItem from="1550840470228" duration="635000" />
+      <workItem from="1550844934318" duration="1100000" />
+      <workItem from="1550846448563" duration="966000" />
+      <workItem from="1551045291412" duration="598000" />
+      <workItem from="1551104867984" duration="3166000" />
+      <workItem from="1551112164639" duration="7537000" />
+      <workItem from="1551126215007" duration="1487000" />
+      <workItem from="1551131638823" duration="631000" />
+      <workItem from="1551144761909" duration="868000" />
+      <workItem from="1551190926146" duration="2612000" />
+      <workItem from="1551198099402" duration="1621000" />
+      <workItem from="1551199857011" duration="310000" />
+      <workItem from="1551200308973" duration="4492000" />
+      <workItem from="1551205172306" duration="2614000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="76361000" />
+    <option name="totallyTimeSpent" value="117812000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -176,8 +228,31 @@
     <frame x="-3" y="31" width="1372" height="740" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4796748" visible="true" weight="0.28625378" />
-      <window_info id="Structure" order="1" sideWeight="0.5203252" side_tool="true" visible="true" weight="0.28625378" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.4771987" weight="0.29531723" />
+      <window_info id="Structure" order="1" sideWeight="0.5228013" side_tool="true" weight="0.29531723" />
+      <window_info id="Favorites" order="2" sideWeight="0.50121063" side_tool="true" weight="0.244713" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3284553" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" />
+      <window_info anchor="bottom" id="Python Console" order="12" weight="0.32899022" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.4771987" visible="true" weight="0.29531723" />
+      <window_info id="Structure" order="1" sideWeight="0.5228013" side_tool="true" visible="true" weight="0.29531723" />
       <window_info id="Favorites" order="2" sideWeight="0.50121063" side_tool="true" weight="0.244713" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -197,7 +272,7 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
       <window_info anchor="right" id="SciView" order="3" />
       <window_info anchor="right" id="Database" order="4" />
-    </layout>
+    </layout-to-restore>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
@@ -213,10 +288,11 @@
     <entry file="file://$PROJECT_DIR$/olxSearchTool/__init__.py">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/olxSearchTool/geckodriver.log" />
     <entry file="file://$PROJECT_DIR$/olxSearchTool/carSearch.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="355">
-          <caret line="249" column="31" lean-forward="true" selection-start-line="249" selection-start-column="31" selection-end-line="249" selection-end-column="49" />
+        <state relative-caret-position="3885">
+          <caret line="270" column="55" selection-start-line="270" selection-start-column="55" selection-end-line="270" selection-end-column="55" />
           <folding>
             <element signature="e#0#15#0" expanded="true" />
           </folding>
@@ -225,10 +301,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/olxSearchTool/findAllBrands&amp;Models.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="35" column="19" selection-start-line="35" selection-start-column="19" selection-end-line="35" selection-end-column="19" />
+        <state relative-caret-position="270">
+          <caret line="18" column="15" lean-forward="true" selection-start-line="18" selection-start-column="15" selection-end-line="18" selection-end-column="15" />
           <folding>
-            <element signature="e#0#15#0" expanded="true" />
+            <element signature="e#0#29#0" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -113,8 +113,8 @@ def get_all_models_from_all_brands(browser):
 
 
 def save_brands_and_models(brands_model_dict):
-    file = 'brands_and_models'
-    file_txt = 'brands_and_models_in_text_format'
+    file = 'textFiles/brands_and_models'
+    file_txt = 'textFiles/brands_and_models_in_text_format'
     f_pickle = open(file, "wb")
     pickle.dump(brands_model_dict, f_pickle)
     f_pickle.close()
@@ -132,13 +132,13 @@ def save_brands_and_models(brands_model_dict):
 
 
 def load_brands_and_models():
-    file = 'brands_and_models'
+    file = 'textFiles/brands_and_models'
     f_pickle = open(file, "r")
     return pickle.load(f_pickle)
 
 
 def log_to_error_file(error):
-    file_txt = 'last_execution_errors_log'
+    file_txt = 'textFiles/last_execution_errors_log'
     write_to_file_replace(file_txt, error)
 
 
