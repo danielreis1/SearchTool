@@ -157,38 +157,39 @@ def create_data_struct():
     return brands_model_dict
 
 
-brands_model_dict = {}
-if len(sys.argv) > 1:
-    print("arguments found")
-    if "-h" in sys.argv:
-        print
-        print("no args to use what we have")
-        print("-remake to get all from olx")
+if __name__ == "__main__":
+    brands_model_dict = {}
+    if len(sys.argv) > 1:
+        print("arguments found")
+        if "-h" in sys.argv:
+            print
+            print("no args to use what we have")
+            print("-remake to get all from olx")
 
-    if "-remake" not in sys.argv:
+        if "-remake" not in sys.argv:
+            try:
+                brands_model_dict = load_brands_and_models()
+            except (OSError, IOError) as e:
+                brands_model_dict = create_data_struct()
+        else:
+            print("remaking")
+            brands_model_dict = create_data_struct()
+
+    else:
+        print("args not found")
         try:
             brands_model_dict = load_brands_and_models()
         except (OSError, IOError) as e:
             brands_model_dict = create_data_struct()
-    else:
-        print("remaking")
-        brands_model_dict = create_data_struct()
 
-else:
-    print("args not found")
-    try:
-        brands_model_dict = load_brands_and_models()
-    except (OSError, IOError) as e:
-        brands_model_dict = create_data_struct()
+    print(brands_model_dict)
 
-print(brands_model_dict)
-
-'''
-# test writing and reading to text file
-brands_model_dict = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
-print(brands_model_dict)
-save_brands_and_models(brands_model_dict)
-
-brands_model_dict = load_brands_and_models()
-print(brands_model_dict)
-'''
+    '''
+    # test writing and reading to text file
+    brands_model_dict = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
+    print(brands_model_dict)
+    save_brands_and_models(brands_model_dict)
+    
+    brands_model_dict = load_brands_and_models()
+    print(brands_model_dict)
+    '''
