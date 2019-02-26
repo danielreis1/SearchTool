@@ -75,7 +75,7 @@ def get_models(brand, brand_model_dict, browser):
     for tag in tags:
         model = tag.span.text.lower().replace(" ", "-")
         # print(model)
-        models[model] = []
+        models[model] = {}
     brand_model_dict[brand] = models
     print(brand)
     print(brand_model_dict[brand])
@@ -101,29 +101,30 @@ def click_models(browser):
 
 def get_all_models_from_all_brands(browser):
     url = 'https://www.olx.pt/carros-motos-e-barcos/carros/'
-    brands_model_dict = get_all_brands(browser, url)
+    brand_models_olx = get_all_brands(browser, url)
 
-    for key in brands_model_dict:
+    for key in brand_models_olx:
         browser.get(url)
         print(key)
         select_brand_from_dropdown_menu(key, browser)
-        get_models(key, brands_model_dict, browser)
+        get_models(key, brand_models_olx, browser)
 
-    return brands_model_dict
+    return brand_models_olx
 
 
-def save_brands_and_models(brands_model_dict):
-    file = 'textFiles/brands_and_models'
-    file_txt = 'textFiles/brands_and_models_in_text_format'
+def save_brands_and_models(brand_models_olx):
+    file = 'textFiles/brands_and_models_olx'
     f_pickle = open(file, "wb")
-    pickle.dump(brands_model_dict, f_pickle)
+    pickle.dump(brand_models_olx, f_pickle)
     f_pickle.close()
+
+    file_txt = 'textFiles/brands_and_models_in_text_format_olx'
     f_txt = open(file_txt, 'w+')
 
-    for brand in brands_model_dict:
+    for brand in brand_models_olx:
         brand_to_write = u''.join(brand).encode('utf-8').strip()
         f_txt.write(brand_to_write + "\n")
-        for model in list(brands_model_dict[brand].keys()):
+        for model in list(brand_models_olx[brand].keys()):
             model_to_write = u''.join(model).encode('utf-8').strip()
             f_txt.write("\t" + model_to_write + "\n")
         f_txt.write("--------------------------\n")
@@ -131,14 +132,14 @@ def save_brands_and_models(brands_model_dict):
     f_txt.close()
 
 
-def load_brands_and_models():
-    file = 'textFiles/brands_and_models'
-    f_pickle = open(file, "r")
+def load_brands_and_models(filename):
+    file = 'textFiles/' + filename
+    f_pickle = open(file, "rb")
     return pickle.load(f_pickle)
 
 
 def log_to_error_file(error):
-    file_txt = 'textFiles/last_execution_errors_log'
+    file_txt = 'textFiles/last_execution_errors_log_olx'
     write_to_file_replace(file_txt, error)
 
 
@@ -151,45 +152,45 @@ def write_to_file_replace(file_txt, text):
 
 def create_data_struct():
     browser = start_browser()
-    brands_model_dict = get_all_models_from_all_brands(browser)
+    brand_models_olx = get_all_models_from_all_brands(browser)
     browser.quit()
-    save_brands_and_models(brands_model_dict)
-    return brands_model_dict
+    save_brands_and_models(brand_models_olx)
+    return brand_models_olx
 
 
 if __name__ == "__main__":
-    brands_model_dict = {}
+    brand_models_olx = {}
     if len(sys.argv) > 1:
         print("arguments found")
         if "-h" in sys.argv:
             print
             print("no args to use what we have")
             print("-remake to get all from olx")
-
+            exit(0)
         if "-remake" not in sys.argv:
             try:
-                brands_model_dict = load_brands_and_models()
+                brand_models_olx = load_brands_and_models('brands_and_models_olx')
             except (OSError, IOError) as e:
-                brands_model_dict = create_data_struct()
+                brand_models_olx = create_data_struct()
         else:
             print("remaking")
-            brands_model_dict = create_data_struct()
+            brand_models_olx = create_data_struct()
 
     else:
         print("args not found")
         try:
-            brands_model_dict = load_brands_and_models()
+            brand_models_olx = load_brands_and_models('brands_and_models_olx')
         except (OSError, IOError) as e:
-            brands_model_dict = create_data_struct()
+            brand_models_olx = create_data_struct()
 
-    print(brands_model_dict)
+    print(brand_models_olx)
 
     '''
     # test writing and reading to text file
-    brands_model_dict = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
-    print(brands_model_dict)
-    save_brands_and_models(brands_model_dict)
+    brand_models_olx = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
+    print(brand_models_olx)
+    save_brands_and_models(brand_models_olx)
     
-    brands_model_dict = load_brands_and_models()
-    print(brands_model_dict)
+    brand_models_olx = load_brands_and_models('brands_and_models'_olx)
+    print(brand_models_olx)
     '''
