@@ -138,6 +138,10 @@ def load_brands_and_models(filename):
     return pickle.load(f_pickle)
 
 
+def pickle_load():
+    return load_brands_and_models('brands_and_models_olx')
+
+
 def log_to_error_file(error):
     file_txt = 'textFiles/last_execution_errors_log_olx'
     write_to_file_replace(file_txt, error)

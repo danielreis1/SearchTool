@@ -6,7 +6,7 @@ import pickle
 import olx_find_all_brands_and_models
 
 def get_all_brands():
-    brand_models_volantesic = {}
+    brands_models_volantesic = {}
     url = "https://volantesic.pt/marcas-carros/"
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
@@ -14,14 +14,14 @@ def get_all_brands():
     for brand in brand_names:
         brand = brand.text.lower().replace(" ", "-")
         #print(brand)
-        brand_models_volantesic[brand] = {}
+        brands_models_volantesic[brand] = {}
     #print
     #print("number brands")
-    #print(len(brand_models_volantesic))
-    return brand_models_volantesic
+    #print(len(brands_models_volantesic))
+    return brands_models_volantesic
 
 
-def get_all_models_by_brand(brand, brand_models_volantesic):
+def get_all_models_by_brand(brand, brands_models_volantesic):
     url = "https://volantesic.pt/marcas-carros/"
     url += brand + "/"
     r = requests.get(url)
@@ -33,21 +33,21 @@ def get_all_models_by_brand(brand, brand_models_volantesic):
         print(model)
         models[model] = {}
     print(models)
-    brand_models_volantesic[brand] = models
-    return brand_models_volantesic
+    brands_models_volantesic[brand] = models
+    return brands_models_volantesic
 
 
 def get_all_brands_and_models():
-    brand_models_volantesic = get_all_brands()
-    for brand in brand_models_volantesic.keys():
-        get_all_models_by_brand(brand, brand_models_volantesic)
-    return brand_models_volantesic
+    brands_models_volantesic = get_all_brands()
+    for brand in brands_models_volantesic.keys():
+        get_all_models_by_brand(brand, brands_models_volantesic)
+    return brands_models_volantesic
 
 
-def pickle_save(brand_models_volantesic):
+def pickle_save(brands_models_volantesic):
     file = 'textFiles/brands_and_models_volantesic'
     f_pickle = open(file, "wb")
-    pickle.dump(brand_models_volantesic, f_pickle)
+    pickle.dump(brands_models_volantesic, f_pickle)
     f_pickle.close()
 
 
@@ -56,7 +56,7 @@ def pickle_load():
 
 
 if __name__ == "__main__":
-    brand_models_volantesic = {}
+    brands_models_volantesic = {}
     if len(sys.argv) > 1:
         print("arguments found")
         if "-h" in sys.argv:
@@ -66,16 +66,16 @@ if __name__ == "__main__":
             exit(0)
         if "-remake" not in sys.argv:
             try:
-                brand_models_olx = pickle_load()
+                brands_models_volantesic = pickle_load()
             except (OSError, IOError) as e:
-                brand_models_volantesic = get_all_brands_and_models()
-                pickle_save(brand_models_volantesic)
+                brands_models_volantesic = get_all_brands_and_models()
+                pickle_save(brands_models_volantesic)
         else:
             print("remaking")
-            brand_models_volantesic = get_all_brands_and_models()
-            pickle_save(brand_models_volantesic)
+            brands_models_volantesic = get_all_brands_and_models()
+            pickle_save(brands_models_volantesic)
     else:
         print("no args")
-        brand_models_volantesic = pickle_load()
+        brands_models_volantesic = pickle_load()
 
-    print(brand_models_volantesic)
+    print(brands_models_volantesic)
