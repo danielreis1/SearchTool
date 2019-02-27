@@ -5,6 +5,7 @@
       <option name="ignoredIdentifiers">
         <list>
           <option value="olx_find_all_brands_and_models" />
+          <option value="volantesic_find_all_brands_and_models" />
         </list>
       </option>
     </inspection_tool>
