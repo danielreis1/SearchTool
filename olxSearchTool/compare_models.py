@@ -206,6 +206,12 @@ def auto_associations(dic):
 
 def set_association(dic, brand, src_model, dest_model):
     # sets dest to none if dest model doesnt exist
+    if brand not in dic:
+        return "error brand: " + brand + " doesnt exist here"
+    elif src_model not in dic[brand]:
+        return "model: " + src_model + " doesnt exist for brand: " + brand
+    elif dest_model not in dic[brand][src_model]:
+        return "dest_model: " + dest_model + " doesnt exist for model: " + src_model + " in brand: " + brand
     dic[brand][src_model] = dest_model
     return "in brand: " + brand + " associated olx: " + src_model + " to volantesic: " + dest_model
 
