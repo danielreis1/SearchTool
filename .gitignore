@@ -66,5 +66,5 @@ fabric.properties
 .idea/caches/build_file_checksums.ser
 geckodriver.log
 
-./olxSearchTool/textFiles
-./olxSearchTool/textFiles/*
+#./olxSearchTool/textFiles
+#./olxSearchTool/textFiles/*
