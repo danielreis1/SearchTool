@@ -66,7 +66,7 @@ def get_models(brand, brand_model_dict, browser):
     except TimeoutException as t:
         error = "get_models click_models timed out, didnt get " + brand
         error += "\n\t" + t.msg
-        error = u''.join(error).encode('utf-8').strip()
+        #error = u''.join(error).encode('utf-8').strip()
         log_to_error_file(error)
 
     soup = BeautifulSoup(browser.page_source, "html.parser")
@@ -118,19 +118,6 @@ def save_brands_and_models(brand_models_olx):
     pickle.dump(brand_models_olx, f_pickle)
     f_pickle.close()
 
-    file_txt = 'textFiles/brands_and_models_in_text_format_olx'
-    f_txt = open(file_txt, 'w+')
-
-    for brand in brand_models_olx:
-        brand_to_write = u''.join(brand).encode('utf-8').strip()
-        f_txt.write(brand_to_write + "\n")
-        for model in list(brand_models_olx[brand].keys()):
-            model_to_write = u''.join(model).encode('utf-8').strip()
-            f_txt.write("\t" + model_to_write + "\n")
-        f_txt.write("--------------------------\n")
-
-    f_txt.close()
-
 
 def load_brands_and_models(filename):
     file = 'textFiles/' + filename
@@ -153,9 +140,9 @@ def log_error_to_file(file, error):
 
 
 def write_to_file_replace(file_txt, text):
-    f_txt = open(file_txt, 'w+')
-    text_to_write = u''.join(text).encode('utf-8').strip()
-    f_txt.write(text_to_write + '\n')
+    f_txt = open(file_txt, 'wb')
+    text_to_write = u''.join(text + '\n').encode('utf-8').strip()
+    f_txt.write(text_to_write)
     f_txt.close()
 
 
@@ -194,12 +181,14 @@ if __name__ == "__main__":
 
     print(brand_models_olx)
 
+    # TODO find a way to fit datsun brand (no models)
+
     '''
     # test writing and reading to text file
     brand_models_olx = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
     print(brand_models_olx)
     save_brands_and_models(brand_models_olx)
     
-    brand_models_olx = load_brands_and_models('brands_and_models'_olx)
+    brand_models_olx = load_brands_and_models(brands_and_models_olx)
     print(brand_models_olx)
     '''
