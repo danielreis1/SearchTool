@@ -39,7 +39,7 @@ def select_brand_from_dropdown_menu(brand, browser):
 
 
 def click_brand(brand, browser):
-    wait = WebDriverWait(browser, 15)
+    wait = WebDriverWait(browser, 10)
     element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a[data-code=" + brand + "]")))
     element.click()
 
@@ -87,13 +87,13 @@ def click_model(brand, model, browser):
     click_brands(browser)
     click_brand(brand, browser)
     click_models(browser)
-    wait = WebDriverWait(browser, 15)
+    wait = WebDriverWait(browser, 10)
     element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "input[value=" + model + "]")))
     element.click()
 
 
 def click_models(browser):
-    wait = WebDriverWait(browser, 15)
+    wait = WebDriverWait(browser, 10)
     element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'li[id=param_modelo]')))
     element = element.find_element_by_css_selector("a")
     element.click()
