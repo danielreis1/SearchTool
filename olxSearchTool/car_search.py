@@ -283,8 +283,13 @@ get_car_accurate_page_volantesic(feature_dict)
 # input("press key to exit")
 # browser.quit()
 
+# TODO REFACTOR ESTE FICHEIRO E FICHEIRO OLX
+# TODO os clicks no que for preciso deve de estar no ficheiro associado ao
+#  site em que isso aconteces, por exemplo alguns aqui tem de estar no olx
+
+
 # TODO ignorar os que aparecem do standvirtual no olx e usar o proprio site do standvirtual para fazer os do standvirtual
 
 # TODO olx average
 
-# TODO os clicks no que for preciso deve de estar no ficheiro associado ao site em que isso aconteces
+
