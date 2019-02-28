@@ -7,12 +7,12 @@ import olx_find_all_brands_and_models
 
 
 def get_all_brands():
-    # TODO
+    # TODO - div -> data-key: make
     pass
 
 
 def get_all_models_by_brand(brand, brands_models_standv):
-    # TODO
+    # TODO - div -> data-key: model
     pass
 
 
@@ -35,18 +35,22 @@ def pickle_load():
 
 
 def click_brand(browser):
+    # TODO
     pass
 
 
 def click_model(browser):
+    # TODO
     pass
 
 
 def click_search_button(browser):
+    # TODO
     pass
 
 
 def get_all_car_pages(browser):
+    # TODO
     pass
 
 
@@ -74,6 +78,7 @@ if __name__ == "__main__":
         try:
             brands_models_standv = pickle_load()
         except (OSError, IOError) as e:
+            # TODO
             browser = olx_find_all_brands_and_models.start_browser(headless=False)
 
     print(brands_models_standv)

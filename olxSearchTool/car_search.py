@@ -16,10 +16,6 @@ import volantesic_find_all_brands_and_models
 import compare_models
 
 
-# TODO this is required, because there is no reliable way of getting the model otherwise
-# brand_model_dict = {"":[]}  1 brand - many models
-
-
 def get_features_olx(soup):
     price = soup.find_all('div', {"class": "price-label"})
     price = ''.join(price[0].find_all(text=True))

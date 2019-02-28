@@ -182,13 +182,3 @@ if __name__ == "__main__":
     print(brand_models_olx)
 
     # TODO find a way to fit datsun brand (no models)
-
-    '''
-    # test writing and reading to text file
-    brand_models_olx = {"abarth": {"model_a": ["1", "2"], "model_a2": ["3", "4"]}, "volks": {"model_b": ["5", "6"], "model_b2": ["7", "8"]}}
-    print(brand_models_olx)
-    save_brands_and_models(brand_models_olx)
-    
-    brand_models_olx = load_brands_and_models(brands_and_models_olx)
-    print(brand_models_olx)
-    '''

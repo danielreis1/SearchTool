@@ -446,10 +446,10 @@ if __name__ == "__main__":
                 message = "showing all brands"
 
             elif inp == "auto":
-
+                # TODO autocomplete all source models that cant be compared anymore
                 message = "auto completing"
             else:
                 retry = True
 
 # TODO must be possible to compare a source with several destinations, example: compare standvirtual with volantesic
-#  and then kbb
+#  and then kbb or vice versa
