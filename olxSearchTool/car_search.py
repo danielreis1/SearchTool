@@ -11,54 +11,13 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
-# from pyvirtualdisplay import Display
+import olx_find_all_brands_and_models
+import volantesic_find_all_brands_and_models
+import compare_models
 
 
 # TODO this is required, because there is no reliable way of getting the model otherwise
 # brand_model_dict = {"":[]}  1 brand - many models
-
-def get_features_standvirtual(soup):
-    # standvirtual tem mto mais informacao, n e' preciso randomizar alguns campos na procura no bkk se for standvirtual
-    price = soup.find_all('span', {"class": "offer-price__number"})
-    price = ''.join(price[0].find_all(text=True))
-    price = price.replace("EUR", "")
-    price = price.strip()
-    price = price.replace(" ", "")
-
-    price = int(price)
-    print(str(price))
-
-    used = soup.find('span', string="Condição").parent.a.text.strip()
-    if used.lower() == "usados":
-        used = True
-    else:
-        used = False
-
-    print(used)
-
-    km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
-    km = km.replace("km", "")
-    print(km)
-    km = int(km)
-
-    fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
-    print(fuel_type)
-
-    year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
-    print(year)
-    year = int(year)
-
-    model = soup.find('span', string="Modelo").parent.a.text.strip()
-    print(model)
-
-    # Cilindrada
-    # Cor
-    # info de Caixa de mudancas
-    # traccao
-    # origem? - pais de origem
-
-    name_feature = {"price": price, "used": used, "km": km, "fuel_type": fuel_type, "year": year, "model": model}
-    return name_feature
 
 
 def get_features_olx(soup):
@@ -76,7 +35,6 @@ def get_features_olx(soup):
         used = True
     else:
         used = False
-
     print(used)
 
     km = soup.find('th', string="Quilómetros").parent.strong.text.strip().replace(".", "")
@@ -97,6 +55,56 @@ def get_features_olx(soup):
     return name_feature
 
 
+def get_car_links_from_a_given_olx_page(url):
+    """
+    :param url: input url already has info on brand and model
+    :return: all cars for a given brand
+    """
+    # TODO this checks 1st page only, check all pages
+
+    # r = requests.get('https://www.olx.pt/carros-motos-e-barcos/carros/abarth/?search[filter_enum_modelo][0]=500&search[description]=1')
+    r = requests.get(url)
+    if r.status_code == requests.codes.ok:
+        # no olx todos os links na pagina que vai ate ao carro tem /anuncio/ , e' so' preciso procurar em todos esses links
+        matched_lines = [line for line in r.text.split('\"') if "/anuncio/" in line]
+        for cnt, line in enumerate(matched_lines):
+            new_line = line.split("html")
+            new_line = new_line[0] + "html"
+            matched_lines[cnt] = new_line
+
+        links_to_cars = list(set(matched_lines))
+        # print("number cars " + str(len(links_to_cars)))
+
+        # TODO use this to see if page changed from last time?
+        # TODO if a given brand has many pages of cars, check last page for number of cars? yes
+        # TODO default esta ordenado por mais recente no olx, o primeiro carro vai para a primeira pagina
+        # TODO after checking new car exists and identifying it check if it exists in persistent list
+        return links_to_cars
+
+
+def get_all_selecione_buttons_volantesic_for_olx(url):
+    """
+    # TODO this is what to do after getting all the parameters from olx, must get average from all prices in volantesic?
+    getting all buttons is useless for standvirtual
+    :param url: ex: https://volantesic.pt/marcas-carros/jaguar/daimler/2008/usado/
+    :return: all links attached to the selecione buttons
+    """
+    r = requests.get(url)
+    if r.status_code == requests.codes.ok:
+        soup = BeautifulSoup(r.text, "html.parser")
+        # print(soup)
+
+        links = soup.find_all("a", string="Selecione")
+        links = [link['href'] for link in links]
+        links = ["https://volantesic.pt" + link.replace("opcoes", "preco") for link in links]
+        print(links)
+        print(len(
+            links))  # aparecem todos os selecione ate' os escondidos (alguns estao escondidos pelo seleccao das opcoes
+
+        # for link in links:
+        link = links[0]
+
+
 def get_features(url, soup):
     if "standvirtual" in url:
         elements_dict = get_features_standvirtual(soup)
@@ -106,17 +114,8 @@ def get_features(url, soup):
     return elements_dict
 
 
-def get_brand_and_model_from_url(url):
-    brand_and_model = url.split("ID")[0]
-    brand_and_model = brand_and_model.replace("-", " ")
-    brand_and_model = brand_and_model.split('/anuncio/')[1]
-    # print(brand_and_model)  # for google search
-    return brand_and_model
-
-
-def get_dest(features_dict, brand):
-    brand_and_model = get_brand_and_model_from_url(url)
-    brand = brand  # set at the beggining manually in for loop (checks all brands)
+def get_dest_url_in_volantesic(features_dict):
+    brand = features_dict["brand"]  # set at the beggining manually in for loop (checks all brands)
     model = features_dict['model']
     year = features_dict['year']
     # print(str(year))
@@ -152,133 +151,140 @@ def get_dest(features_dict, brand):
     return requests.get(dest_url)
 
 
-brandList = []  # all lists
-brand = 'abarth'
-'''
-r = requests.get(
-    'https://www.olx.pt/carros-motos-e-barcos/carros/abarth/?search[filter_enum_modelo][0]=500&search[description]=1')
+def get_car_estimated_price_volantesic(browser, url):
+    browser.get(url)
+
+    # press buy private
+    browser.find_element_by_id("tabBuyPrivate").click()
+    wait = WebDriverWait(browser, 10)
+
+    # press the button to change km
+    element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a[class=pricingMileageEdit]")))
+    element.click()
+
+    # input km number
+    element = wait.until(EC.element_to_be_clickable((By.ID, 'TextBoxKM')))
+    element.clear()
+    element.send_keys("100000")
+
+    # press button to change km
+    browser.find_element_by_css_selector("a[onclick*='VehiclePrice.SaveTexBoxKMPricing']").click()
+
+    # get value to compare to
+    element = wait.until(
+        EC.presence_of_element_located((By.CSS_SELECTOR, 'svg[id*=drawSVG]')))  # wait for image to appear
+    soup = BeautifulSoup(browser.page_source, "html.parser")
+    base_value = soup.svg.find('tspan', string="Valor a Particular").parent
+    base_value = base_value.find_all('tspan', text=True)
+
+    # print(base_value)
+    for i in base_value:
+        if "€" in i.text:
+            base_value = i.text.replace("€", "").replace(" ", "").strip()
+    print(base_value)
 
 
-if r.status_code == requests.codes.ok:
-    # no olx todos os links na pagina que vai ate ao carro tem /anuncio/ , e' so' preciso procurar em todos esses links
-    # print(r.text)
-    # anuncio = "http[?]*/anuncio/"
-    # link_list = [m for m in re.findall(anuncio, r.text)]
-    # print(link_list)
-    matched_lines = [line for line in r.text.split('\"') if "/anuncio/" in line]
-    for cnt, line in enumerate(matched_lines):
-        new_line = line.split("html")
-        new_line = new_line[0] + "html"
-        matched_lines[cnt] = new_line
+def get_features_standvirtual(url):
+    """
+    :param url: standvirtual's car url
+    :return: features_dict, key: feature name, val: feat value
+    """
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, "html.parser")
 
-    links_to_cars = list(set(matched_lines))  # remove duplicates
-    # print(links_to_cars)
-    print("number cars " + str(len(links_to_cars)))
+    # standvirtual tem mto mais informacao, n e' preciso randomizar alguns campos na procura no bkk se for standvirtual
+    price = soup.find_all('span', {"class": "offer-price__number"})
+    price = ''.join(price[0].find_all(text=True))
+    price = price.replace("EUR", "")
+    price = price.strip()
+    price = price.replace(" ", "")
 
-    # TODO use this to see if page changed from last time?
-    # TODO if a given brand has 20 pages of cars, check 1st and last page for number of cars? sim
-    # TODO default esta ordenado por mais recente no olx, o primeiro carro vai para a primeira pagina
-    # TODO after checking new car exists and identifying it check if it exists in persistent list
-    # part 2
-    # this for is just to test specific site
+    price = int(price)
+    print(str(price))
 
-    url = links_to_cars[0]  # random, - between standvirtual or olx
+    used = soup.find('span', string="Condição").parent.a.text.strip()
+    if used.lower() == "usados":
+        used = True
+    else:
+        used = False
 
-    '''
-'''
-        for i in links_to_cars:
-        if "standvirtual" in i:
-            url = i
-            break
-            
+    print(used)
 
-    url_type = ""
-    if "standvirtual" in url:
-        url_type = "standvirtual"
-    elif "olx" in url:
-        url_type = "olx"
+    km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
+    km = km.replace("km", "")
+    print(km)
+    km = int(km)
 
-    print(url)
+    fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
+    print(fuel_type)
 
-    # pode redereccionar para standvirtual ou olx
-    r2 = requests.get(url)
-    # get features: price, year, km, used or not, fuel
-    if r2.status_code == requests.codes.ok:
-        soup1 = BeautifulSoup(r2.text, "html.parser")
-        # print(soup)
-        features_dict = get_features(url, soup1)
-        r3 = get_dest(features_dict, brand)
-        '''
-'''
-if r3.status_code == requests.codes.ok:
-    soup2 = BeautifulSoup(r3.text, "html.parser")
-    #print(soup2)
+    year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
+    print(year)
+    year = int(year)
 
-    # TODO put this into a function and call after check if it is persistent
-    links = soup2.find_all("a", string="Selecione")
-    links = [link['href'] for link in links]
-    links = ["https://volantesic.pt" + link.replace("opcoes", "preco") for link in links]
-    print(links)
-    print(len(links))  # aparecem todos os selecione ate' os escondidos,
-    # TODO put in dict -> brand: {}, and make persistent
+    model = soup.find('span', string="Modelo").parent.a.text.strip()
+    print(model)
 
-    # TODO olx ve todos e tira pelo preco mais baixo para ver se e' bom ou nao
-    #for link in links:  # TODO get from persistent if exists, if not call get links func
-    link = links[0]
-    '''
+    # TODO
+    # Cilindrada
+    # Cor
+    # info de Caixa de mudancas
+    # traccao
+    # origem? - pais de origem
 
-url = "https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279"
-link = "https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279"
-
-# print(link)
-# r = requests.get(link)
-# soup = BeautifulSoup(r.text, "lxml")
-# print(soup)
-# svg_to_parse = soup.find("svg")
-# print(svg_to_parse)
-# svg = BeautifulSoup(svg_to_parse, "xml")
-# precos = soup.find_all("svg")
-# print(precos)
+    name_feature = {"price": price, "used": used, "km": km, "fuel_type": fuel_type, "year": year, "model": model}
+    return name_feature
 
 
-# display = Display(visible=0, size=(1366, 768))
+def get_car_accurate_page_volantesic(features):
+    # TODO
+    """
+    :param features: dictionary with key: parameter name, value: parameter ready for use by volantesic
+    :return: link to webpage from where you get the price from
+    """
 
-options = Options()
-options.headless = True
-# TODO change this string to comand line input or environment variable, and create script to initialize that variable
-profile = webdriver.FirefoxProfile("/root/.mozilla/firefox/yy1okn6z.default")
-firefox_binary = FirefoxBinary("/usr/bin/firefox")
-browser = webdriver.Firefox(options=options, firefox_profile=profile, firefox_binary=firefox_binary)
-browser.get(url)
+    # v_url = get_dest_url_in_volantesic(features)
+    v_url = "https://volantesic.pt/marcas-carros/alfa-romeo/giulietta/2011/usado/"
 
-# press buy private
-browser.find_element_by_id("tabBuyPrivate").click()
-wait = WebDriverWait(browser, 10)
-# press the button to change km
-element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a[class=pricingMileageEdit]")))
-browser.find_element_by_css_selector("a[class=pricingMileageEdit]").click()
-# input km number
-element = wait.until(EC.element_to_be_clickable((By.ID, 'TextBoxKM')))
-element = browser.find_element_by_id("TextBoxKM")
-element.clear()
-element.send_keys("100000")
-# press button to change km
-browser.find_element_by_css_selector("a[onclick*='VehiclePrice.SaveTexBoxKMPricing']").click()
 
-# get value to compare to
-element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'svg[id*=drawSVG]'))) # wait for image to appear
-soup = BeautifulSoup(browser.page_source, "html.parser")
-base_value = soup.svg.find('tspan', string="Valor a Particular").parent
-base_value = base_value.find_all('tspan', text=True)
-#print(base_value)
-for i in base_value:
-    if "€" in i.text:
-        base_value = i.text.replace("€", "").replace(" ", "").strip()
-print(base_value)
+def get_car_links_standv():
+    # TODO
+    pass
 
-input("press key to exit")
-browser.quit()
 
-# TODO olx ve todos e tira pelo preco mais baixo para ver se e' bom ou nao
+def get_car_links_standv_to_compare_to_volantesic(comp_dic):
+    # TODO
+    pass
 
-# TODO standvirtual permite uma pesquisa mais certeira
+
+def get_compare_dict(type_c):
+    compare_d = {}
+    if type_c == "olx_volantesic":
+        compare_d = compare_models.pickle_load_olx_volante()
+    elif type_c == "standv_volantesic":
+        compare_d = compare_models.pickle_load_standv_volante()
+    else:
+        print("type_c is wrong")
+    return compare_d
+
+
+type_comp = "standv"
+compare_dict = get_compare_dict(type_comp)
+# url = "https://volantesic.pt/abarth/500/2015/usado/comprar/preco/?ID=88279"
+# browser = olx_find_all_brands_and_models.start_browser()
+get_car_links_standv()  # these are the links from standv
+get_car_links_standv_to_compare_to_volantesic(compare_dict)  # only those being compared to volantesic
+standv_car_url = "https://www.standvirtual.com/anuncio/alfa-romeo-giulietta-1-6-jtdm-sport-nacional-ID8MqJJV.html" \
+                 "#1881796c1f;promoted "
+feature_dict = get_features_standvirtual(standv_car_url)
+get_car_accurate_page_volantesic(feature_dict)
+
+# get_car_estimated_price_volantesic(browser, url)
+# input("press key to exit")
+# browser.quit()
+
+# TODO ignorar os que aparecem do standvirtual no olx e usar o proprio site do standvirtual para fazer os do standvirtual
+
+# TODO olx average
+
+# TODO os clicks no que for preciso deve de estar no ficheiro associado ao site em que isso aconteces
