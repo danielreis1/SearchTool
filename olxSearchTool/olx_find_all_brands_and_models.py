@@ -11,10 +11,10 @@ from selenium.webdriver.support.ui import WebDriverWait
 import pickle
 
 
-def start_browser():
+def start_browser(headless=True):
     start_url = "https://google.com"
     options = Options()
-    options.headless = True
+    options.headless = headless
     # TODO change this paths to command line input or environment variable, and create script to initialize that
     #  variable
     profile_path = "/root/.mozilla/firefox/yy1okn6z.default"
