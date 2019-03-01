@@ -375,6 +375,7 @@ if __name__ == "__main__":
 
         type_comp = get_comparison_type(source_site, dest_site)
         dic = load_comparison_dic(type_comp)
+        auto_associations(dic)
 
         retry = False
         message = ""
