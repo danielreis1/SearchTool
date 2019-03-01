@@ -23,7 +23,7 @@ def create_model_assoc(brand, src_brands_and_models, trg_brands_and_models, asso
                 olx_dest_models_dict[src_model] += [dest_model]
             assoc_dic[brand] = olx_dest_models_dict
 
-    else:
+    else:  # TODO what to do with this brands? - must be solved in car_search, with average algorithm
         error = "brand: " + brand + "\n" + "the brand does not exist in volantesic"
         log_errors(error)
 
