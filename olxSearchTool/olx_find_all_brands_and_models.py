@@ -52,7 +52,10 @@ def get_all_brands(browser, url):
     tags = soup.find_all("a", {"data-name": "search[category_id]"})
     brands = []
     for tag in tags:
-        brands += [tag['data-code']]
+        brand = tag['data-code']
+        if "nao-list" in brand:
+            continue
+        brands += [brand]
     # print(brands)
     for i in brands:
         brands_models_dict[i] = []
