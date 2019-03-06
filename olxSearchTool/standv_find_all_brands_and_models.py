@@ -1,3 +1,4 @@
+import requests
 from bs4 import BeautifulSoup
 import sys
 from selenium.webdriver.common.by import By
@@ -5,6 +6,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import pickle
 import olx_find_all_brands_and_models
+from car_links_struct import *
 
 
 def get_all_brands(browser):
@@ -24,7 +26,6 @@ def get_all_brands(browser):
 
 
 def get_all_models_by_brand(browser, brand, brands_models_standv):
-
     click_brand(browser, brand)
     wait = WebDriverWait(browser, 10)
     element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'select[data-key="model"]')))
@@ -85,33 +86,183 @@ def click_model(browser, brand, model):
     browser.get(url)
 
 
-def get_all_car_pages(browser):
+def get_model_soup(brand, model):
     """
-    TODO change this to get all cars from all pages, not just the first page
-    :param browser: browser should already contain url
+    doesnt use the browser
     :param brand:
     :param model:
-    :return: list of car pages
+    :return:
     """
-    # TODO this needs to be tested
-    car_pages = []
-    wait = WebDriverWait(browser, 10)
-    element = wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, 'article[role="link"]')))
-    for page in element:
-        car_page = page.get_attribute("data-href")
-        print(car_page)
-        car_pages += [car_page]
-    return car_pages
+    url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search[filter_enum_damaged]=0" \
+                                                                         "&search[brand_program_id][0]=&search[" \
+                                                                         "country]= "
+    # print(url)
+    r = requests.get(url)
+    if r.status_code == requests.codes.ok:
+        soup = BeautifulSoup(r.text, "html.parser")
+        return soup
 
 
-def get_cars(browser, brand, model):
-    # TODO this function is the one that will be used by car_search after import,
-    #   abstracts click_model then get_all_car_pages
-    url = ""
-    browser.get(url)
-    click_model(browser, brand, model)
-    get_all_car_pages(browser)
-    pass
+def get_max_car_pages(soup):
+    max_page_num = 0
+    dic = {}
+    page_nums = soup.find_all('li', {"class": ""})
+    for num_container in page_nums:
+        num_container = num_container.find("a")
+        if num_container is not None:
+            num_container = num_container.find("span", {"id": False})
+            if num_container is not None:
+                try:
+                    num_container = int(num_container.text)
+                    # print(num_container)
+                    if num_container > max_page_num:
+                        max_page_num = num_container
+                except ValueError:
+                    # print("error converting")
+                    continue
+    return max_page_num
+
+
+def get_all_car_pages(max_page_num, brand, model):
+    standv_cars = []
+    links = []
+    if max_page_num == 0:
+        url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search[filter_enum_damaged]=0&search[" \
+                                                                             "brand_program_id][0]=&search[country]="
+        aux_get_all_car_pages(brand, model, links, 0, url)
+    else:
+        links = aux_get_all_car_pages(brand, model)
+        for i in range(1, max_page_num + 1):
+            aux_get_all_car_pages(brand, model, links, i)
+    standv_struct = CarLinksStruct(brand, model, links, max_page_num)
+    return standv_struct
+
+
+def aux_get_all_car_pages(brand, model, links, i, url=None):
+    # print(i)
+    if url is None:
+        url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search%5Bfilter_enum_damaged%5D=0&page="
+        url += str(i)
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, "html.parser")
+    car_links = soup.find_all('article', {"role": "link"})
+    for link in car_links:
+        link = link['data-href']
+        # print(link)
+        if link not in links:
+            links += [link]
+    # print(len(links))
+    return links
+
+
+def get_cars(brand, model):
+    # TODO this is to be used in import car_search.py
+
+    soup = get_model_soup(brand, model)
+    max_pages = get_max_car_pages(soup)
+    car_pages = get_all_car_pages(max_pages, brand, model)
+    temp = associate_feats_to_carlink(car_pages)
+    return temp
+
+
+def associate_feats_to_carlink(standv_struct):
+    """
+    :param standv_struct: brand, model associated with all its links
+    :return: returns list with keys brand and model
+    and values a list of CarLinkFeature -> gives all the links for given features for a brand and model
+    """
+
+    brand = standv_struct.get_brand()
+    model = standv_struct.get_model()
+    brand_model_car_struct_list = CarLinkFeaturesList(brand, model)
+    continue_loop = ContinueLoop()
+    for link in standv_struct.get_links():
+        # print(link)
+        feats = get_features(link)
+        try:
+            for car_struct in brand_model_car_struct_list.get_features_list():
+                if car_struct.is_feats_equal(feats):
+                    car_struct.add_link(link)
+                    print("car link added")
+                    raise continue_loop
+        except ContinueLoop:
+            # print("exception")
+            continue
+        # print("car created")
+        car_struct = CarLinkFeatures(brand, model, feats)
+        car_struct.add_link(link)
+        brand_model_car_struct_list.add_car(car_struct)
+    # for i in brand_model_car_struct_list.get_features_list():
+    # print(i)
+    return brand_model_car_struct_list
+
+
+def get_features(url):
+    """
+    :param url: standvirtual's car url
+    :return: features_dict, key: feature name, val: feat value
+    """
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, "html.parser")
+
+    price = soup.find_all('span', {"class": "offer-price__number"})
+
+    price = ''.join(price[0].find_all(text=True))
+    price = price.replace("EUR", "")
+    price = price.strip()
+    price = price.replace(" ", "")
+
+    price = int(price)
+    # print(str(price))
+
+    used = soup.find('span', string="Condição").parent.a.text.strip()
+    if used.lower() == "usados":
+        used = "usado"
+    else:
+        used = "novo"
+    # print(used)
+
+    km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
+    km = km.replace("km", "")
+    # print(km)
+    km = int(km)
+
+    fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
+    # print(fuel_type)
+
+    year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
+    # print(year)
+    year = int(year)
+
+    brand = soup.find('span', string="Marca").parent.a.text.strip()
+    # print(brand)
+
+    model = soup.find('span', string="Modelo").parent.a.text.strip()
+    # print(model)
+
+    cv = soup.find('span', string="Potência").parent.div.text.strip()
+    cv = cv.lower().replace("cv", "").replace(" ", "")
+    # print(cv)
+    cv = int(cv)
+
+    color = soup.find('span', string="Cor").parent.a.text.strip()
+    # print(color)
+    try:
+        caixa_mudancas = soup.find('span', string="Tipo de Caixa").parent.a.text.strip()
+    except AttributeError:
+        caixa_mudancas = "manual"
+    # print(caixa_mudancas)
+
+    try:
+        traccao = soup.find('span', string="Tracção").parent.div.text.strip()
+        traccao = traccao.replace("Tracção ", "")
+        # print(traccao)
+    except AttributeError:
+        traccao = "traseira"
+
+    # print(traccao)
+    feats = CarFeatures(brand, model, price, used, km, fuel_type, year, cv, color, caixa_mudancas, traccao)
+    return feats
 
 
 if __name__ == "__main__":
@@ -119,7 +270,7 @@ if __name__ == "__main__":
     if len(sys.argv) > 1:
         print("arguments found")
         if "-h" in sys.argv:
-            print
+            print()
             print("no args to use what we have")
             print("-remake to get all from standvirtual")
             exit(0)
@@ -140,5 +291,5 @@ if __name__ == "__main__":
         except (OSError, IOError) as e:
             brands_models_standv = get_all_brands_and_models()
             pickle_save(brands_models_standv)
-
         print(brands_models_standv)
+        print()
