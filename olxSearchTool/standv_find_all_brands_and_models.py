@@ -66,7 +66,6 @@ def pickle_load():
 
 def click_brand(browser, brand):
     """
-    doesnt really click brand, just simulates it TODO
     :return: simulates click on brand
     """
     url = "https://www.standvirtual.com/carros/" + "/" + brand + "/?search[filter_enum_damaged]=0&search[new_used]=all"
@@ -156,20 +155,26 @@ def aux_get_all_car_pages(brand, model, links, i, url=None):
 
 
 def get_cars(brand, model):
-    # TODO this is to be used in import car_search.py
+    """
+
+    :param brand:
+    :param model:
+    :return: returns list with keys: (brand and model)
+    and values: (a list of CarLinkFeature -> gives all the links for given features for a brand and model)
+    """
+    # this is to be used in import car_search.py
 
     soup = get_model_soup(brand, model)
     max_pages = get_max_car_pages(soup)
     car_pages = get_all_car_pages(max_pages, brand, model)
-    temp = associate_feats_to_carlink(car_pages)
-    return temp
+    return associate_feats_to_carlink(car_pages)
 
 
 def associate_feats_to_carlink(standv_struct):
     """
     :param standv_struct: brand, model associated with all its links
-    :return: returns list with keys brand and model
-    and values a list of CarLinkFeature -> gives all the links for given features for a brand and model
+    :return: returns list with keys: (brand and model)
+    and values: (a list of CarLinkFeature -> gives all the links for given features for a brand and model)
     """
 
     brand = standv_struct.get_brand()
@@ -178,20 +183,21 @@ def associate_feats_to_carlink(standv_struct):
     continue_loop = ContinueLoop()
     for link in standv_struct.get_links():
         # print(link)
-        feats = get_features(link)
+        km, price, color, feats = get_features(link)
+        print(feats)
         try:
-            for car_struct in brand_model_car_struct_list.get_features_list():
-                if car_struct.is_feats_equal(feats):
-                    car_struct.add_link(link)
-                    print("car link added")
+            for car_link_feats_list in brand_model_car_struct_list.get_features_list():
+                if car_link_feats_list.is_feats_equal(feats):
+                    car_link_feats_list.add_car(price, km, link, color)
+                    print("CarLinkFeatures added")
                     raise continue_loop
         except ContinueLoop:
             # print("exception")
             continue
         # print("car created")
-        car_struct = CarLinkFeatures(brand, model, feats)
-        car_struct.add_link(link)
-        brand_model_car_struct_list.add_car(car_struct)
+        car_struct = CarLinkFeatures(feats)
+        car_struct.add_car(price, km, link, color)
+        brand_model_car_struct_list.add_features(car_struct)
     # for i in brand_model_car_struct_list.get_features_list():
     # print(i)
     return brand_model_car_struct_list
@@ -200,7 +206,7 @@ def associate_feats_to_carlink(standv_struct):
 def get_features(url):
     """
     :param url: standvirtual's car url
-    :return: features_dict, key: feature name, val: feat value
+    :return: features_dict, key: feature name, val: feat value and km and price
     """
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
@@ -220,30 +226,28 @@ def get_features(url):
         used = "usado"
     else:
         used = "novo"
-    # print(used)
+    print(used)
 
     km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
     km = km.replace("km", "")
-    # print(km)
+    print(km)
     km = int(km)
 
     fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
-    # print(fuel_type)
+    print(fuel_type)
 
     year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
-    # print(year)
+    print(year)
     year = int(year)
-
-    brand = soup.find('span', string="Marca").parent.a.text.strip()
-    # print(brand)
-
-    model = soup.find('span', string="Modelo").parent.a.text.strip()
-    # print(model)
 
     cv = soup.find('span', string="Potência").parent.div.text.strip()
     cv = cv.lower().replace("cv", "").replace(" ", "")
     # print(cv)
     cv = int(cv)
+
+    segmento = soup.find('span', string="Segmento").parent.div.text.strip()
+    segmento = segmento.lower()
+    # print(segmento)
 
     color = soup.find('span', string="Cor").parent.a.text.strip()
     # print(color)
@@ -256,13 +260,24 @@ def get_features(url):
     try:
         traccao = soup.find('span', string="Tracção").parent.div.text.strip()
         traccao = traccao.replace("Tracção ", "")
-        # print(traccao)
     except AttributeError:
         traccao = "traseira"
-
     # print(traccao)
-    feats = CarFeatures(brand, model, price, used, km, fuel_type, year, cv, color, caixa_mudancas, traccao)
-    return feats
+
+    try:
+        version = soup.find('span', string="Versão").parent.div.text.strip()
+    except AttributeError:
+        version = ""
+    # print(version)
+
+    try:
+        doors = soup.find('span', string="Nº de portas").parent.a.text.strip()
+    except AttributeError:
+        doors = 4
+    # print(doors)
+    feats = CarFeatures(used, fuel_type, year, cv, caixa_mudancas, traccao, segmento,
+                        version, doors)
+    return km, price, color, feats
 
 
 if __name__ == "__main__":
