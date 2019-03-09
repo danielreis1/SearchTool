@@ -69,7 +69,7 @@ def get_models(brand, brand_model_dict, browser):
     except TimeoutException as t:
         error = "get_models click_models timed out, didnt get " + brand
         error += "\n\t" + t.msg
-        #error = u''.join(error).encode('utf-8').strip()
+        # error = u''.join(error).encode('utf-8').strip()
         log_to_error_file(error)
 
     soup = BeautifulSoup(browser.page_source, "html.parser")
@@ -185,3 +185,73 @@ if __name__ == "__main__":
     print(brand_models_olx)
 
     # TODO find a way to fit datsun brand (no models)
+
+    # TODO olx average
+
+    # TODO refactor what is below
+"""
+
+def get_car_links_from_a_given_olx_page(url):
+    """
+"""
+    :param url: input url already has info on brand and model
+    :return: all cars for a given brand
+    """
+"""
+    # TODO this checks 1st page only, check all pages
+
+    # r = requests.get('https://www.olx.pt/carros-motos-e-barcos/carros/abarth/?search[filter_enum_modelo][0]=500&search[description]=1')
+    r = requests.get(url)
+    if r.status_code == requests.codes.ok:
+        # no olx todos os links na pagina que vai ate ao carro tem /anuncio/ , e' so' preciso procurar em todos esses links
+        matched_lines = [line for line in r.text.split('\"') if "/anuncio/" in line]
+        for cnt, line in enumerate(matched_lines):
+            new_line = line.split("html")
+            new_line = new_line[0] + "html"
+            matched_lines[cnt] = new_line
+
+        links_to_cars = list(set(matched_lines))
+        # print("number cars " + str(len(links_to_cars)))
+
+        # TODO use this to see if page changed from last time?
+        # TODO if a given brand has many pages of cars, check last page for number of cars? yes
+        # TODO default esta ordenado por mais recente no olx, o primeiro carro vai para a primeira pagina
+        # TODO after checking new car exists and identifying it check if it exists in persistent list
+        return links_to_cars
+
+
+def get_features_olx(soup):
+    price = soup.find_all('div', {"class": "price-label"})
+    price = ''.join(price[0].find_all(text=True))
+    price = price.replace("€", "")
+    price = price.replace(".", "")
+    price = price.strip()
+
+    price = int(price)
+    print(str(price))
+
+    used = soup.find('th', string="Condição").parent.a.text.strip()
+    if used.lower() == "usado":
+        used = True
+    else:
+        used = False
+    print(used)
+
+    km = soup.find('th', string="Quilómetros").parent.strong.text.strip().replace(".", "")
+    print(km)
+    km = int(km)
+
+    fuel_type = soup.find('th', string="Combustível").parent.a.text.strip()
+    print(fuel_type)
+
+    year = soup.find('th', string="Ano").parent.strong.text.strip()
+    print(year)
+    year = int(year)
+
+    model = soup.find('th', string="Modelo").parent.a.text.strip()
+    print(model)
+
+    name_feature = {"price": price, "used": used, "km": km, "fuel_type": fuel_type, "year": year, "model": model}
+    return name_feature
+
+"""
