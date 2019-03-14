@@ -60,15 +60,22 @@ class CarLinkFeaturesList:
 
 
 class CarLinkFeatures:
-    # purpose is to link CarFeatures class to Car class
-    # associates features to a set of links(cars) -> 1 set of features can have many cars(links) with != prices, kms,
-    # etc.
-    # features are key, value is set(Car) of Car class with given feature
-    def __init__(self, features, cars=None):
+    # purpose is to link CarFeatures class to Car classes associates features(and destination url - associated to a
+    # score) to a set of links(cars) -> 1 set of features can have many cars(links) with != prices, kms,
+    # etc. features are key, value is set(Car) of Car class with given feature
+    def __init__(self, features, cars=None, searched_dests=None):
+        """
+        :type searched_dests: set
+        :type cars: set
+        :type features: CarFeatures
+        """
+        if searched_dests is None:
+            searched_dests = []
         if cars is None:
             cars = set()
         self.cars = set(cars)
         self.features = features
+        self.searched_dests = searched_dests
 
     def __str__(self) -> str:
         string = ""
@@ -88,7 +95,10 @@ class CarLinkFeatures:
 
     def remove_car(self, link):
         # this should remove car with link, because link is what defines a car
-        self.cars.remove(Car(0, 0, link, "red"))
+        self.cars.remove(Car(0, 0, link, "red"))  # check if this works
+
+    def get_cars(self):
+        return self.cars
 
     def is_feats_equal(self, other_feats):
         if self.features == other_feats:
@@ -101,8 +111,19 @@ class CarLinkFeatures:
     def get_feats_dict(self):
         return self.features.get_feats_dict()
 
+    def set_destination(self, urls, max_score):
+        self.features.set_destination(urls, max_score)
+
+    def add_searched_dest(self, searched_dest):
+        self.searched_dests += [searched_dest]
+
+    def get_searched_dests(self):
+        return self.searched_dests
+
 
 class CarFeatures:
+    # has an associated score and url(destination) destination url may change, because one source can be compared to
+    # several destination, and a destination may have a higher score than the other
     def __init__(self, used, fuel_type, year, cv, caixa_mudancas, traction, segmento,
                  version, doors):
         self.used = used
@@ -114,6 +135,9 @@ class CarFeatures:
         self.segmento = segmento.strip().lower()
         self.version = version.strip().lower()
         self.doors = int(doors)
+
+        self.urls = []
+        self.max_score = 0
 
     def __str__(self) -> str:
         return "used " + self.used \
@@ -144,16 +168,28 @@ class CarFeatures:
             t_dic[i] = t_dic[i].strip().lower()
         return t_dic
 
+    def set_destination(self, urls, max_score):
+        self.urls += urls
+        self.max_score = max_score
+
+    def get_destination(self):
+        return self.urls, self.max_score
+
 
 class Car:
     # purpose is to link one car link to his features
     # this class also has km, price, link
 
-    def __init__(self, km, price, link, color):
+    def __init__(self, km, price, link, color, estimated_price=None, estimated_price_history=None):
+        if estimated_price_history is None:
+            estimated_price_history = {}
         self.km = int(km)
         self.price = int(price)
         self.link = link
         self.color = color
+        if estimated_price is None:
+            self.estimated_price = 0
+        self.estimated_price_history = estimated_price_history
 
     def __eq__(self, other):
         return self.link == other.link
@@ -167,10 +203,45 @@ class Car:
                + "price " + str(self.price) + "\n"\
                + "color " + str(self.color) + "\n"
 
+    def is_good_estimation(self):
+        diff = self.estimated_price - self.price
+        if diff > 0:
+            # print("good offer")
+            return True
+        else:
+            return False
+
+    def get_estimation(self):
+        diff = self.estimated_price - self.price
+        print("difference " + str(diff))
+        return diff
+
+    def set_new_estimation(self, estimated_price, dest):
+        if estimated_price > self.estimated_price:
+            self.estimated_price = estimated_price
+            print("new price estimated, higher than the last")
+        try:
+            self.estimated_price_history[dest] += [self.estimated_price]
+        except KeyError:
+            self.estimated_price_history[dest] = []
+            self.estimated_price_history[dest] += [self.estimated_price]
+
+    def get_estimated_price_history(self, dest):
+        hist = {}
+        try:
+            hist = self.estimated_price_history[dest]
+        except KeyError:
+            print('no history for this dest: ' + dest)
+        return hist
+
 
 class ContinueLoop(Exception):
     pass
 
 
-class MaxScoreToLowForEvaluation(Exception):
-    pass
+class MaxScoreTooLowForEvaluation(Exception):
+    def __init__(self, score):
+        self.score = score
+
+    def get_score_error_msg(self):
+        print("error max score too low: " + str(self.score))

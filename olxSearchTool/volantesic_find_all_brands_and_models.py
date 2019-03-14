@@ -1,16 +1,16 @@
 import requests
+import unidecode
 from bs4 import BeautifulSoup
 import sys
-
 import pickle
-
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
 import olx_find_all_brands_and_models
 import feats_mapper
-from car_links_struct import MaxScoreToLowForEvaluation
+from car_links_struct import *
+from container_classes import FeaturesContainer
 
 
 def get_all_brands():
@@ -77,8 +77,6 @@ def get_dest_url(feats, brand, model):
         test_year = link.strong.text
         # print(year)
         test_year = int(test_year)
-        if test_year == year:
-            feats.is_exact_year()
         year_interval = abs(year - test_year)
         if year_interval < prev_year_interval:
             min_year = test_year
@@ -93,6 +91,7 @@ def get_dest_url(feats, brand, model):
 
 
 def get_clean_feats(feats, type_c):
+    # TODO refactor to file imported by all destinations
     """
     :param type_c:
     :param feats: src_feats
@@ -103,8 +102,8 @@ def get_clean_feats(feats, type_c):
     src_feats_dict = feats.get_feats_dict()
     for feat_type in src_feats_dict:
         feat_val = src_feats_dict[feat_type]
-        print(feat_type)
-        print(feat_val)
+        # print(feat_type)
+        # print(feat_val)
         clean_feats[feat_type] = feats_assoc[feat_type][feat_val]
 
     print(clean_feats)
@@ -112,6 +111,7 @@ def get_clean_feats(feats, type_c):
 
 
 def get_all_seleccione_buttons(url):
+    # not used maybe in olx
     """
     :param url: ex: https://volantesic.pt/marcas-carros/jaguar/daimler/2008/usado/
     :return: all links attached to the selecione buttons
@@ -126,9 +126,9 @@ def get_all_seleccione_buttons(url):
         links = soup.find_all("a", string="Selecione")
         links = [link['href'] for link in links]
         links = ["https://volantesic.pt" + link.replace("opcoes", "preco") for link in links]
-        print(links)
-        print(len(
-            links))  # all selecciones appear ate' os escondidos (alguns estao escondidos pelo seleccao das opcoes
+        # print(links)
+        # print(len(
+        #    links))  # all selecciones appear ate' os escondidos (alguns estao escondidos pelo seleccao das opcoes
 
 
 def get_all_seleccione_text_and_button(url):
@@ -153,13 +153,17 @@ def get_all_seleccione_text_and_button(url):
 
 def get_buttons_from_features(brand, model, feats, type_c):
     """
-    must give a score based on how precise the search is and show that score the score or similarity score is how
-    much the car from the source is similar to the destination, the higher the better
+    must give a score based on how precise the search is and show that score, the score or similarity score is how
+    much the car from the source is similar to the destination, the higher the better, has a minimum value
+    :type feats: CarFeatures
+    :param brand:
+    :param model:
     :param type_c:
     :param feats: CarFeatures object
     :return: returns list of all buttons associated with given feats and their score
     """
 
+    print("new set of buttons for different car features")
     buttons = {}  # key: button, val: score
     url = get_dest_url(feats, brand, model)
     r = requests.get(url)
@@ -167,76 +171,140 @@ def get_buttons_from_features(brand, model, feats, type_c):
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
         t_year = soup.find('span', {"itemprop": "releaseDate"}).text
-        print(t_year)
+        print("t_year: " + t_year)
     else:
         print("error in request")
-
     t_year = int(t_year)
-    sel_buttons = get_all_seleccione_text_and_button(url)
-    caixa_mudancas, traction, segmento, fuel_type = get_clean_feats(feats, type_c)
+
+    feats_dict = get_clean_feats(feats, type_c)
+    caixa_mudancas = feats_dict['tipo de caixa']
+    traction = feats_dict['traccao']
+    segmento = feats_dict['segmento']
+    fuel_type = feats_dict['combustivel']
     cv = int(feats.cv)
-    str_cv = str(cv) + "cv"
     year = int(feats.year)
     doors = str(feats.doors) + "p"
     version = feats.version
+    src_feats = FeaturesContainer(caixa_mudancas, traction, segmento, fuel_type, cv, year, doors, version)
+
+    sel_buttons = get_all_seleccione_text_and_button(url)
 
     for sel in sel_buttons:
+        print()
+        print("next button")
+        print()
         select = sel_buttons[sel]
-        score = 0
         text = select[0]
+
         t_version = select[1].strip().lower()
 
         text = text.strip().lower().split(" ")
         t_segmento = text[0]
         t_cv = text[1]
-        int_t_cv = t_cv.strip().lower().replace("cv", "")
-        int_t_cv = int(int_t_cv)
+        t_int_cv = t_cv.strip().lower().replace("cv", "")
+        t_int_cv = int(t_int_cv)
         t_doors = text[2]
         t_fuel_type = text[3]
         t_traction = text[4]
         t_caixa_mudancas = text[5]
+        dest_feats = FeaturesContainer(t_caixa_mudancas, t_traction, t_segmento, t_fuel_type, t_int_cv, t_year, t_doors,
+                                       t_version)
 
-        # TODO fix how the scores work later
-        if caixa_mudancas in t_caixa_mudancas:
-            score += 5
-        if traction == t_traction:
-            score += 5
-        if segmento == t_segmento:
-            score += 5
-        if str_cv == t_cv:
-            score += 10
-        elif int_t_cv - 5 < cv < int_t_cv + 5:
-            score += 5
-        elif int_t_cv - 10 < cv < int_t_cv + 10:
-            score += 1
-        if doors == t_doors:
-            score += 5
-        if fuel_type == t_fuel_type:
-            score += 5
-        if version != "":
-            if version == t_version:
-                score += 30
-            elif version in t_version:
-                score += 15
-            else:
-                version_tokens = version.split(" ")
-                for token in version_tokens:
-                    if token in t_version:
-                        score += 1
-        if t_year == -1:
-            print("t_year=-1 error")
-            pass
-        elif year == t_year:
-            score += 5
-        elif year - 2 < t_year < year + 2:
-            score += 1
-
+        score = set_score(src_feats, dest_feats)
         buttons[sel] = score
     return buttons
 
 
+def set_score(src_feats, dest_feats):
+    # TODO refactor this function to all dests imported file
+    """
+    purpose is to set score or add to other function also helping to set score from any destination
+    also good to log all this information to later display it when presenting the chosen car
+    :param dest_feats:
+    :param src_feats:
+    :return:
+    """
+    score = 0
+
+    caixa_mudancas = src_feats.caixa_mudancas
+    traction = src_feats.traction
+    segmento = src_feats.segmento
+    fuel_type = src_feats.fuel_type
+    cv = src_feats.cv_int
+    year = src_feats.year_int
+    doors = src_feats.doors
+    version = src_feats.version
+    str_cv = str(cv) + "cv"
+
+    t_caixa_mudancas = dest_feats.caixa_mudancas
+    t_traction = dest_feats.traction
+    t_segmento = dest_feats.segmento
+    t_fuel_type = dest_feats.fuel_type
+    t_int_cv = dest_feats.cv_int
+    t_cv = str(t_int_cv)
+    t_year = dest_feats.year_int
+    t_doors = dest_feats.doors
+    t_version = dest_feats.version
+
+    print("source \t dest" + "\n"
+          + segmento + "\t" + t_segmento + "\n"
+          + str(cv) + "\t" + str(t_cv) + "cv" + "\n"
+          + doors + "\t" + t_doors + "\n"
+          + fuel_type + "\t" + t_fuel_type + "\n"
+          + traction + "\t" + t_traction + "\n"
+          + caixa_mudancas + "\t" + t_caixa_mudancas + "\n"
+          + str(year) + "\t" + str(t_year) + "\n"
+          + version + "\t" + t_version)
+
+    # scores might need some twerking
+    if caixa_mudancas in t_caixa_mudancas:
+        score += 3
+    if traction == t_traction:
+        score += 3
+    if segmento == t_segmento:
+        score += 3
+    if str_cv == t_cv:
+        score += 10
+    elif t_int_cv - 5 < cv < t_int_cv + 5:
+        score += 3
+    elif t_int_cv - 10 < cv < t_int_cv + 10:
+        score += 1
+    if doors == t_doors:
+        score += 3
+    if fuel_type == t_fuel_type:
+        score += 3
+    if version != "":
+        if version == t_version:
+            score += 30
+        elif version in t_version:
+            score += 16
+        else:
+            scored = True
+            version_tokens = version.split(" ")
+            for i in range(len(version_tokens) - 1):
+                v_tokens_aglomeration = version_tokens[i] + " " + version_tokens[i + 1]
+                if v_tokens_aglomeration in t_version:
+                    score += 16
+                    scored = False
+                    break
+            if scored:
+                for token in version_tokens:
+                    if token in t_version:
+                        score += 1
+    if t_year == -1:
+        print("t_year=-1 error")
+        pass
+    elif year == t_year:
+        score += 5
+    elif year - 2 < t_year < year + 2:
+        score += 1
+    print("score: " + str(score))
+    return score
+
+
 def filter_buttons(buttons):
     """
+    from all the buttons chooses the buttons with the highest similarity score
     :param buttons: input buttons, alongside scores key: button, val: score
     :return: max_score, list with all buttons with max_score as key
     """
@@ -245,9 +313,9 @@ def filter_buttons(buttons):
     for i in buttons:
         if buttons[i] > max_score:
             max_score = buttons[i]
-    # TODO fix max_score minimum value once more info is collected on the scores and how to make them better
+    # max_score minium value might need some twerking
     if max_score < 30:
-        raise MaxScoreToLowForEvaluation
+        raise MaxScoreTooLowForEvaluation(max_score)
     for i in buttons:
         if buttons[i] == max_score:
             max_score_buttons += [i]
@@ -255,15 +323,15 @@ def filter_buttons(buttons):
     return max_score, max_score_buttons
 
 
-def get_car_estimated_price_volantesic(browser, car):
+def get_car_estimated_price(browser, url, car):
     """
 
     :param browser:
-    :param car:
+    :param car: Car Object
     :return: returns base value for a car
     """
     km = car.km
-    browser.get(car.link)
+    browser.get(url)
 
     # press buy private
     browser.find_element_by_id("tabBuyPrivate").click()
@@ -290,43 +358,82 @@ def get_car_estimated_price_volantesic(browser, car):
 
     # print(base_value)
     for i in base_value:
-        if "€" in i.text:
-            base_value = i.text.replace("€", "").replace(" ", "").strip()
+        txt = unidecode.unidecode(i.text)
+        print(txt)
+        if "€" in txt:
+            base_value = txt.replace("€", "")
+            break
+        elif "EUR" in txt:
+            base_value = txt.replace("EUR", "")
+    base_value = base_value.replace(" ", "").strip()
     print(base_value)
+    base_value = int(base_value)
     return base_value
 
 
-def get_correct_estimate_price(car, type_c):
+def get_correct_estimate_prices(car_link_features, browser, dest):
     # this is to be used in import car_search.py
+
     """
-    uses get_car_estimated_price_volantesic to get correct prices
-    :param type_c:
-    :param car: output of get_cars from source
+    purpose is to set the estimated_price in all Car objects in car_link_features
+    :param dest: used to set already searched destination
+    :type car_link_features: CarLinkFeatures
+    :param browser:
+    :param car_link_features: CarLinkFeatures object
+
     :return: correct price is picked after inspecting
     all prices from all given buttons and picks the lowest, to get worst possible evaluation and see if worst
-    possible is good, or returns None if there was no value worth returning (because the cars are not similar enough)
+    possible is good, or returns None if max_score is too low -> there was no value worth returning (because the cars
+    are not similar enough)
+    the above in :return is done for all cars with the same features and estimated_price is set in all of them
     """
-    element = next(iter(car))
-    brand = element.get_brand()
-    model = element.get_model()
-    buttons = get_buttons_from_features(brand, model, element, type_c)
-    buttons_links = []
+    cars = car_link_features.get_cars()
+    feats = car_link_features.get_feats()
+    urls, max_score = feats.get_destination()
+    for car in cars:
+        for url in urls:
+            estimated_price = get_car_estimated_price(browser, url, car)
+            car.set_new_estimation(estimated_price, dest)  # set new estimated price if it is higher than the last
+    car_link_features.add_searched_dest(dest)
+
+
+def get_all_cars_dest_url(brand, model, car_link_feats, type_c):
+    # this is to be used in import car_search.py
+
+    """
+    purpose is to get all urls associated to the seleccione buttons (all possible dest urls associated to a set of features)
+    :type car_link_feats: CarLinkFeatures
+    :param model:
+    :param car_link_feats:
+    :param type_c:
+    :return urls, max_score
+
+    """
+
+    print()
+    features = car_link_feats.get_feats()
+    buttons = get_buttons_from_features(brand, model, features, type_c)
+    max_score_buttons = []
     try:
         max_score, max_score_buttons = filter_buttons(buttons)
-    except MaxScoreToLowForEvaluation:
-        print("no evaluation was possible, similarity score to low")
-        return None
+        print()
+        print("max_score " + str(max_score))
+        # print("max_score buttons number: " + str(len(max_score_buttons)))
+    except MaxScoreTooLowForEvaluation as e:
+        print()
+        e.get_score_error_msg()
+        return
+
+    urls = []
     for but in max_score_buttons:
-        url = but['href']
-        print(url)
-
-
-def get_all_cars_estimate_price(cars, type_c):
-    pass
-
-
-def build_estimate_struct():
-    pass
+        url = 'https://volantesic.pt' + but['href']
+        urls += [url]
+    links = urls
+    links = [link.replace("opcoes", "preco") for link in links]
+    urls = links
+    print(urls)
+    car_link_feats.set_destination(urls, max_score)
+    return urls, max_score
 
 
 def pickle_load():
@@ -358,4 +465,3 @@ if __name__ == "__main__":
 
     print(brands_models_volantesic)
     print()
-
