@@ -17,13 +17,12 @@ def create_model_assoc(brand, src_brands_and_models, trg_brands_and_models, asso
     olx_dest_models_dict = {}
     if brand in trg_brands_and_models.keys():
         for src_model in src_brands_and_models[brand]:
-            # if list is empty (brand with no models) it just finishes this for loop TODO check if that is supposed to happen
             olx_dest_models_dict[src_model] = []
             for dest_model in trg_brands_and_models[brand]:
                 olx_dest_models_dict[src_model] += [dest_model]
             assoc_dic[brand] = olx_dest_models_dict
 
-    else:  # TODO what to do with this brands? - must be solved in car_search, with average algorithm
+    else:
         error = "brand: " + brand + "\n" + "the brand does not exist in volantesic"
         log_errors(error)
 
