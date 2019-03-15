@@ -290,12 +290,12 @@ def set_association(dic, brand, src_model, dest_model):
 
 def load_comparison_dic(type_c):
     """
-    loads or creates a comparison dictionary based input strings
-    :param src: string
-    :param dest: string
+    loads or creates a comparison dictionary based input string
+    :param type_c:
     :return: comparison dict
     """
 
+    dic = {}
     if type_c == "standv_volantesic":
         try:
             dic = pickle_load(type_c)
