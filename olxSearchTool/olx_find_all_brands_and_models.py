@@ -1,6 +1,6 @@
 from bs4 import BeautifulSoup
 import sys
-
+import os
 from selenium import webdriver
 from selenium.common.exceptions import TimeoutException
 from selenium.webdriver.firefox.firefox_binary import FirefoxBinary
@@ -143,10 +143,16 @@ def log_error_to_file(file, error):
 
 
 def write_to_file_replace(file_txt, text):
-    f_txt = open(file_txt, 'wb')
+    f_txt_temp = file_txt + "temp"
+    try:  # file may not exist to be removed
+        os.remove(file_txt)
+    except Exception as e:
+        print(e)
+    f_txt = open(f_txt_temp, 'wb')
     text_to_write = u''.join(text + '\n').encode('utf-8').strip()
     f_txt.write(text_to_write)
     f_txt.close()
+    os.replace(f_txt_temp, file_txt)
 
 
 def create_data_struct():

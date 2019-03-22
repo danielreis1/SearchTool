@@ -22,3 +22,45 @@ class FeaturesContainer:
                + "year " + str(self.year_int) + "\n" \
                + "doors " + str(self.doors) + "\n" \
                + "version " + str(self.version) + "\n"
+
+
+class SearchStatus:
+    def __init__(self, brand, model, type_comp):
+        self.set_all(brand, model, type_comp)
+
+    def get_brand(self):
+        return self.brand
+
+    def get_model(self):
+        return self.model
+
+    def get_type_c(self):
+        return self.type_comp
+
+    def set_all(self, brand, model, type_comp):
+        self.brand = brand
+        self.model = model
+        self.type_comp = type_comp
+
+    def __str__(self):
+        return "brand: " + self.brand + " model " + self.model + " type_c " + self.type_comp
+
+
+class OutputTextContainer:
+    def __init__(self, text):
+        """
+        :type text: str
+        """
+
+        self.text = "the higher the score the better the more similiar was the car from standvirtual to the car " \
+           "at volantesic\n" \
+           "price difference is: price_volantensic - price_standvirtual \n dest links are the links related " \
+           "to the car at volantesic, might be more than one because the car may be similar to many options " \
+           "from volantesc \n"
+        self.text += text
+
+    def add_text(self, text):
+        self.text += text
+
+    def get_text(self):
+        return self.text

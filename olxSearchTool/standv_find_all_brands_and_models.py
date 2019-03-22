@@ -1,10 +1,14 @@
+import time
+
 import requests
+import os
 from bs4 import BeautifulSoup
 import sys
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import pickle
+
 import olx_find_all_brands_and_models
 from car_links_struct import *
 
@@ -55,9 +59,11 @@ def get_all_brands_and_models():
 
 def pickle_save(brands_models_standv):
     file = 'textFiles/brands_and_models_standv'
-    f_pickle = open(file, "wb")
+    file_temp = file + "temp"
+    f_pickle = open(file_temp, "wb")
     pickle.dump(brands_models_standv, f_pickle)
     f_pickle.close()
+    os.replace(file_temp, file)
 
 
 def pickle_load():
@@ -96,6 +102,7 @@ def get_model_soup(brand, model):
                                                                          "&search[brand_program_id][0]=&search[" \
                                                                          "country]= "
     # print(url)
+    print("requests")
     r = requests.get(url)
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
@@ -122,18 +129,86 @@ def get_max_car_pages(soup):
     return max_page_num
 
 
-def get_all_car_pages(max_page_num, brand, model):
-    standv_cars = []
+def load_car_links_struct():
+    return olx_find_all_brands_and_models.load_brands_and_models("carLinksStructs/standv")
+
+
+def save_car_links_struct(standv_struct):
+    file = 'textFiles/carLinksStructs/' + "standv"
+    file_temp = file + "temp"
+    f_pickle = open(file_temp, "wb")
+    pickle.dump(standv_struct, f_pickle)
+    f_pickle.close()
+    os.replace(file_temp, file)
+
+
+def aux_update(update, links, url=None):
+    """
+    :type update: CarLinksStruct
+    :param update:
+    :param links: list
+    :return:
+    """
+    max_page = update.get_max_pages()
+    brand = update.get_brand()
+    model = update.get_model()
+
+    if url is not None:
+        aux_aux_update(update, links, url)
+
+    else:
+        for i in range(1, max_page + 1):
+            url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search%5Bfilter_enum_damaged%5D=0" \
+                                                                                 "&page= "
+            url += str(i)
+            end = aux_aux_update(update, links, url)
+            if end:
+                break
+            time.sleep(1)
+    return links
+
+
+def aux_aux_update(update, links, url):
+    end = False
+    r = requests.get(url)
+    soup = BeautifulSoup(r.text, "html.parser")
+    car_links = soup.find_all('article', {"role": "link"})
+    for link in car_links:
+        link = link['data-href']
+        if link in update.get_links():
+            end = True
+            break
+        else:
+            links += [link]
+    return end
+
+
+def get_all_car_pages(max_page_num, brand, model, update=None):
+    # it does get first page in both cases max page == 0 and != 0
     links = []
     if max_page_num == 0:
         url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search[filter_enum_damaged]=0&search[" \
                                                                              "brand_program_id][0]=&search[country]="
-        aux_get_all_car_pages(brand, model, links, 0, url)
+        if update is None:
+            aux_get_all_car_pages(brand, model, links, url)
+        else:
+            aux_update(update, links, url)
+
     else:
-        links = aux_get_all_car_pages(brand, model)
-        for i in range(1, max_page_num + 1):
-            aux_get_all_car_pages(brand, model, links, i)
-    standv_struct = CarLinksStruct(brand, model, links, max_page_num)
+        if update is None:
+            for i in range(1, max_page_num + 1):
+                aux_get_all_car_pages(brand, model, links, i)
+                time.sleep(1)
+        else:
+            aux_update(update, links)
+    if update is None:
+        standv_struct = CarLinksStruct(brand, model, links, max_page_num)
+        save_car_links_struct(standv_struct)
+    else:
+        # update has all links, but only the new ones are returned
+        update.add_links(links)
+        save_car_links_struct(update)
+        standv_struct = CarLinksStruct(brand, model, links, max_page_num)
     return standv_struct
 
 
@@ -142,6 +217,7 @@ def aux_get_all_car_pages(brand, model, links, i, url=None):
     if url is None:
         url = "https://www.standvirtual.com/carros/" + brand + "/" + model + "/?search%5Bfilter_enum_damaged%5D=0&page="
         url += str(i)
+    print("requests")
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
     car_links = soup.find_all('article', {"role": "link"})
@@ -154,7 +230,21 @@ def aux_get_all_car_pages(brand, model, links, i, url=None):
     return links
 
 
-def get_cars(brand, model):
+def update_car_pages(car_pages):
+    """
+
+    :type car_pages: CarLinksStructr
+    :param car_pages:
+    :return:
+    """
+    max_pages = car_pages.get_max_pages()
+    brand = car_pages.get_brand()
+    model = car_pages.get_model()
+    standv_struct = get_all_car_pages(max_pages, brand, model, car_pages)
+    return standv_struct
+
+
+def get_cars(brand, model, type_c):
     """
 
     :param brand:
@@ -165,12 +255,19 @@ def get_cars(brand, model):
     # this is to be used in import car_search.py
 
     soup = get_model_soup(brand, model)
-    max_pages = get_max_car_pages(soup)
-    car_pages = get_all_car_pages(max_pages, brand, model)
-    return associate_feats_to_carlink(car_pages)
+    try:
+        car_pages = load_car_links_struct()
+        print("loaded car links struct")
+        car_pages = update_car_pages(car_pages)
+    except (OSError, IOError) as e:
+        print("could not load car links struct")
+        max_pages = get_max_car_pages(soup)
+        car_pages = get_all_car_pages(max_pages, brand, model)
+    ret = associate_feats_to_carlink(car_pages, type_c)
+    return ret
 
 
-def associate_feats_to_carlink(standv_struct):
+def associate_feats_to_carlink(standv_struct, type_c):
     """
     :param standv_struct: brand, model associated with all its links
     :return: returns list with keys: (brand and model)
@@ -183,13 +280,16 @@ def associate_feats_to_carlink(standv_struct):
     continue_loop = ContinueLoop()
     for link in standv_struct.get_links():
         # print(link)
+        time.sleep(1)
         km, price, color, feats = get_features(link)
-        print(feats)
+        # print("standv associate_feats_to_carlink")
+        # print(feats)
         try:
-            for car_link_feats_list in brand_model_car_struct_list.get_features_list():
-                if car_link_feats_list.is_feats_equal(feats):
-                    car_link_feats_list.add_car(price, km, link, color)
-                    print("CarLinkFeatures added")
+            for car_link_feats in brand_model_car_struct_list.get_features_list():
+                if car_link_feats.is_feats_equal(feats):
+                    # cars = car_link_feats.get_cars()
+                    car_link_feats.add_car(price, km, link, color)
+                    print("Car added to existing car_link_feats list")
                     raise continue_loop
         except ContinueLoop:
             # print("exception")
@@ -208,6 +308,7 @@ def get_features(url):
     :param url: standvirtual's car url
     :return: features_dict, key: feature name, val: feat value and km and price
     """
+    print("requests get_features standv")
     r = requests.get(url)
     soup = BeautifulSoup(r.text, "html.parser")
 
@@ -226,18 +327,18 @@ def get_features(url):
         used = "usado"
     else:
         used = "novo"
-    print(used)
+    # print(used)
 
     km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
     km = km.replace("km", "")
-    print(km)
+    # print(km)
     km = int(km)
 
     fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
-    print(fuel_type)
+    # print(fuel_type)
 
     year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
-    print(year)
+    # print(year)
     year = int(year)
 
     cv = soup.find('span', string="Potência").parent.div.text.strip()

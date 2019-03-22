@@ -1,3 +1,5 @@
+import os
+
 import requests
 import unidecode
 from bs4 import BeautifulSoup
@@ -54,9 +56,11 @@ def get_all_brands_and_models():
 
 def pickle_save(brands_models_volantesic):
     file = 'textFiles/brands_and_models_volantesic'
+    file_temp = file + "temp"
     f_pickle = open(file, "wb")
     pickle.dump(brands_models_volantesic, f_pickle)
     f_pickle.close()
+    os.replace(file_temp, file)
 
 
 def get_dest_url(feats, brand, model):
@@ -106,7 +110,7 @@ def get_clean_feats(feats, type_c):
         # print(feat_val)
         clean_feats[feat_type] = feats_assoc[feat_type][feat_val]
 
-    print(clean_feats)
+    # print(clean_feats)
     return clean_feats
 
 
@@ -163,7 +167,7 @@ def get_buttons_from_features(brand, model, feats, type_c):
     :return: returns list of all buttons associated with given feats and their score
     """
 
-    print("new set of buttons for different car features")
+    #print("new set of buttons for different car features")
     buttons = {}  # key: button, val: score
     url = get_dest_url(feats, brand, model)
     r = requests.get(url)
@@ -171,7 +175,7 @@ def get_buttons_from_features(brand, model, feats, type_c):
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
         t_year = soup.find('span', {"itemprop": "releaseDate"}).text
-        print("t_year: " + t_year)
+        #print("t_year: " + t_year)
     else:
         print("error in request")
     t_year = int(t_year)
@@ -245,7 +249,7 @@ def set_score(src_feats, dest_feats):
     t_year = dest_feats.year_int
     t_doors = dest_feats.doors
     t_version = dest_feats.version
-
+    '''
     print("source \t dest" + "\n"
           + segmento + "\t" + t_segmento + "\n"
           + str(cv) + "\t" + str(t_cv) + "cv" + "\n"
@@ -255,7 +259,7 @@ def set_score(src_feats, dest_feats):
           + caixa_mudancas + "\t" + t_caixa_mudancas + "\n"
           + str(year) + "\t" + str(t_year) + "\n"
           + version + "\t" + t_version)
-
+    '''
     # scores might need some twerking
     if caixa_mudancas in t_caixa_mudancas:
         score += 3
@@ -359,14 +363,14 @@ def get_car_estimated_price(browser, url, car):
     # print(base_value)
     for i in base_value:
         txt = unidecode.unidecode(i.text)
-        print(txt)
+        #print(txt)
         if "€" in txt:
             base_value = txt.replace("€", "")
             break
         elif "EUR" in txt:
             base_value = txt.replace("EUR", "")
     base_value = base_value.replace(" ", "").strip()
-    print(base_value)
+    #print(base_value)
     base_value = int(base_value)
     return base_value
 
