@@ -313,6 +313,7 @@ if __name__ == "__main__":
         print(status)
         time.sleep(3)
 
+        # car search loop
         try:
             while True:
                 for type_comp in dict_of_list_for_all_sources_dests:
@@ -344,5 +345,6 @@ if __name__ == "__main__":
             exit()
         browser.quit()
 
+# TODO ITS IMPORTANT to add some kind of notification or something for cars that are new only (found in car search loop)
 # the idea is to check standvirtual, then olx, all sources..., sequentialy and check if there is a new one and
 #  add that new one to our structure and then compare to volantesic and all other destinations...,
