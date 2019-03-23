@@ -14,6 +14,7 @@ import compare_models
 import standv_find_all_brands_and_models
 import volantesic_find_all_brands_and_models
 from container_classes import SearchStatus, OutputTextContainer
+from pygame import mixer
 
 
 def get_source_dest_imports(source, dest):
@@ -109,9 +110,14 @@ def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_
     source_import, dest_import = get_source_dest_imports_by_type_c(type_c)
     src, dest = get_source_and_dest_from_type_comp(type_c)
     t_list = source_import.get_cars(brand, model, type_c)  # gets new cars only (updates since last time)
+    new = True
     for car_link_features in t_list:
         if dest not in car_link_features.get_searched_dests() or dest_bool:  # different destination may get a higher
             # score
+            if new:  # only supposed to beep once
+
+                new_cars_alert()
+                new = False
             dest_import.get_all_cars_dest_url(brand, model, car_link_features, type_c)
             dest_import.get_correct_estimate_prices(car_link_features, browser, dest)
             time.sleep(1)
@@ -143,6 +149,12 @@ def update_cars(brand_model_list, type_c, browser):
     model = brand_model_list.get_model()
     l = []
     remake_by_brand_model(brand, model, browser, type_c, l, True)
+
+
+def new_cars_alert():
+    mixer.init()  # you must initialize the mixer
+    alert = mixer.Sound('bell.wav')
+    alert.play()
 
 
 def save_prices(car_link_feats_list, type_c):
@@ -188,8 +200,8 @@ def save_prices_to_file(type_c, text):
         obj.add_text(t)
     except (OSError, IOError) as e:
         obj = OutputTextContainer(t)
-        pickle_save_final_prices_obj(obj, type_c)
 
+    pickle_save_final_prices_obj(obj, type_c)
     t = obj.get_text()
     olx_find_all_brands_and_models.write_to_file_replace(filename, t)
 
@@ -346,6 +358,5 @@ if __name__ == "__main__":
         browser.quit()
 
 # TODO test with bigger brand and models
-# TODO ITS IMPORTANT to add some kind of notification or something for cars that are new only (found in car search loop)
 # the idea is to check standvirtual, then olx, all sources..., sequentialy and check if there is a new one and
 #  add that new one to our structure and then compare to volantesic and all other destinations...,

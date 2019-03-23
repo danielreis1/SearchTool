@@ -9,6 +9,7 @@ from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 import pickle
 
+import car_search
 import olx_find_all_brands_and_models
 from car_links_struct import *
 
@@ -258,6 +259,10 @@ def get_cars(brand, model, type_c):
     try:
         car_pages = load_car_links_struct()
         print("loaded car links struct")
+        try:  # this is in case database (al_car_features_lists)doesnt exist and carLinksStructs data does
+            car_search.pickle_load_cars(type_c, brand, model)
+        except (OSError, IOError) as e:
+            raise OSError
         car_pages = update_car_pages(car_pages)
     except (OSError, IOError) as e:
         print("could not load car links struct")

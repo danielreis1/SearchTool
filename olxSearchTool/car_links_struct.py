@@ -307,7 +307,3 @@ class MaxScoreTooLowForEvaluation(Exception):
 
     def get_score_error_msg(self):
         print("error max score too low: " + str(self.score))
-
-
-class CarAlreadyExists(Exception):
-    pass
