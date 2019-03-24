@@ -69,5 +69,6 @@ geckodriver.log
 venv
 venv/*
 
-#./olxSearchTool/textFiles
-#./olxSearchTool/textFiles/*
+./olxSearchTool/textFiles/carFeaturesList/*
+./olxSearchTool/textFiles/carLinksStructs/*
+
