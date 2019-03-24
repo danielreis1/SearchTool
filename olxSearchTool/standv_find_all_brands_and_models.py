@@ -130,12 +130,15 @@ def get_max_car_pages(soup):
     return max_page_num
 
 
-def load_car_links_struct():
-    return olx_find_all_brands_and_models.load_brands_and_models("carLinksStructs/standv")
+def load_car_links_struct(brand, model):
+    filename = "carLinksStructs/standv" + "_" + brand + "_" + model
+    return olx_find_all_brands_and_models.load_brands_and_models(filename)
 
 
 def save_car_links_struct(standv_struct):
-    file = 'textFiles/carLinksStructs/' + "standv"
+    brand = standv_struct.get_brand()
+    model = standv_struct.get_model()
+    file = 'textFiles/carLinksStructs/' + "standv" + "_" + brand + "_" + model
     file_temp = file + "temp"
     f_pickle = open(file_temp, "wb")
     pickle.dump(standv_struct, f_pickle)
@@ -145,6 +148,7 @@ def save_car_links_struct(standv_struct):
 
 def aux_update(update, links, url=None):
     """
+    :param url:
     :type update: CarLinksStruct
     :param update:
     :param links: list
@@ -176,6 +180,8 @@ def aux_aux_update(update, links, url):
     car_links = soup.find_all('article', {"role": "link"})
     for link in car_links:
         link = link['data-href']
+        # TODO this links are not ordered, new car may be on first page, if all on first page are new go to 2nd page,
+        #  and so on
         if link in update.get_links():
             end = True
             break
@@ -257,13 +263,16 @@ def get_cars(brand, model, type_c):
 
     soup = get_model_soup(brand, model)
     try:
-        car_pages = load_car_links_struct()
+        car_pages = load_car_links_struct(brand, model)
         print("loaded car links struct")
         try:  # this is in case database (al_car_features_lists)doesnt exist and carLinksStructs data does
             car_search.pickle_load_cars(type_c, brand, model)
+            car_pages = update_car_pages(car_pages)  # if datastruct exists, return info to update it
         except (OSError, IOError) as e:
-            raise OSError
-        car_pages = update_car_pages(car_pages)
+            # if datastruct doesnt exist, return originally loaded car_pages and recreate datastruct, it will be
+            # updated in next loop
+            ret = associate_feats_to_carlink(car_pages, type_c)
+            return ret
     except (OSError, IOError) as e:
         print("could not load car links struct")
         max_pages = get_max_car_pages(soup)
@@ -286,7 +295,12 @@ def associate_feats_to_carlink(standv_struct, type_c):
     for link in standv_struct.get_links():
         # print(link)
         time.sleep(1)
-        km, price, color, feats = get_features(link)
+        try:
+            print(link)
+            km, price, color, feats = get_features(link)
+        except FailedURLException as e:
+            print(e.get_url())
+            continue
         # print("standv associate_feats_to_carlink")
         # print(feats)
         try:
@@ -305,6 +319,7 @@ def associate_feats_to_carlink(standv_struct, type_c):
         brand_model_car_struct_list.add_features(car_struct)
     # for i in brand_model_car_struct_list.get_features_list():
     # print(i)
+    print("associating feats to carlink done")
     return brand_model_car_struct_list
 
 
@@ -315,74 +330,78 @@ def get_features(url):
     """
     print("requests get_features standv")
     r = requests.get(url)
-    soup = BeautifulSoup(r.text, "html.parser")
+    if r.status_code == requests.codes.ok:
+        soup = BeautifulSoup(r.text, "html.parser")
 
-    price = soup.find_all('span', {"class": "offer-price__number"})
+        price = soup.find_all('span', {"class": "offer-price__number"})
 
-    price = ''.join(price[0].find_all(text=True))
-    price = price.replace("EUR", "")
-    price = price.strip()
-    price = price.replace(" ", "")
+        price = ''.join(price[0].find_all(text=True))
+        price = price.replace("EUR", "")
+        price = price.strip()
+        price = price.replace(" ", "")
 
-    price = int(price)
-    # print(str(price))
+        price = int(price)
+        # print(str(price))
 
-    used = soup.find('span', string="Condição").parent.a.text.strip()
-    if used.lower() == "usados":
-        used = "usado"
+        used = soup.find('span', string="Condição").parent.a.text.strip()
+        if used.lower() == "usados":
+            used = "usado"
+        else:
+            used = "novo"
+        # print(used)
+
+        km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
+        km = km.replace("km", "")
+        # print(km)
+        km = int(km)
+
+        fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
+        # print(fuel_type)
+
+        year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
+        # print(year)
+        year = int(year)
+
+        cv = soup.find('span', string="Potência").parent.div.text.strip()
+        cv = cv.lower().replace("cv", "").replace(" ", "")
+        # print(cv)
+        cv = int(cv)
+
+        segmento = soup.find('span', string="Segmento").parent.div.text.strip()
+        segmento = segmento.lower()
+        # print(segmento)
+
+        color = soup.find('span', string="Cor").parent.a.text.strip()
+        # print(color)
+        try:
+            caixa_mudancas = soup.find('span', string="Tipo de Caixa").parent.a.text.strip()
+        except AttributeError:
+            caixa_mudancas = "manual"
+        # print(caixa_mudancas)
+
+        try:
+            traccao = soup.find('span', string="Tracção").parent.div.text.strip()
+            traccao = traccao.replace("Tracção ", "")
+        except AttributeError:
+            traccao = "traseira"
+        # print(traccao)
+
+        try:
+            version = soup.find('span', string="Versão").parent.div.text.strip()
+        except AttributeError:
+            version = ""
+        # print(version)
+
+        try:
+            doors = soup.find('span', string="Nº de portas").parent.a.text.strip()
+        except AttributeError:
+            doors = 4
+        # print(doors)
+        feats = CarFeatures(used, fuel_type, year, cv, caixa_mudancas, traccao, segmento,
+                            version, doors)
     else:
-        used = "novo"
-    # print(used)
-
-    km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
-    km = km.replace("km", "")
-    # print(km)
-    km = int(km)
-
-    fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
-    # print(fuel_type)
-
-    year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
-    # print(year)
-    year = int(year)
-
-    cv = soup.find('span', string="Potência").parent.div.text.strip()
-    cv = cv.lower().replace("cv", "").replace(" ", "")
-    # print(cv)
-    cv = int(cv)
-
-    segmento = soup.find('span', string="Segmento").parent.div.text.strip()
-    segmento = segmento.lower()
-    # print(segmento)
-
-    color = soup.find('span', string="Cor").parent.a.text.strip()
-    # print(color)
-    try:
-        caixa_mudancas = soup.find('span', string="Tipo de Caixa").parent.a.text.strip()
-    except AttributeError:
-        caixa_mudancas = "manual"
-    # print(caixa_mudancas)
-
-    try:
-        traccao = soup.find('span', string="Tracção").parent.div.text.strip()
-        traccao = traccao.replace("Tracção ", "")
-    except AttributeError:
-        traccao = "traseira"
-    # print(traccao)
-
-    try:
-        version = soup.find('span', string="Versão").parent.div.text.strip()
-    except AttributeError:
-        version = ""
-    # print(version)
-
-    try:
-        doors = soup.find('span', string="Nº de portas").parent.a.text.strip()
-    except AttributeError:
-        doors = 4
-    # print(doors)
-    feats = CarFeatures(used, fuel_type, year, cv, caixa_mudancas, traccao, segmento,
-                        version, doors)
+        failed_to_load_url = FailedURLException(url)
+        raise failed_to_load_url
     return km, price, color, feats
 
 

@@ -23,11 +23,11 @@ def get_all_brands():
     brand_names = soup.find_all('p', {"class": "brandSlideName"})
     for brand in brand_names:
         brand = brand.text.lower().replace(" ", "-")
-        # print(brand)
+        # # print(brand)
         brands_models_volantesic[brand] = {}
-    # print
-    # print("number brands")
-    # print(len(brands_models_volantesic))
+    # # print
+    # # print("number brands")
+    # # print(len(brands_models_volantesic))
     return brands_models_volantesic
 
 
@@ -40,9 +40,9 @@ def get_all_models_by_brand(brand, brands_models_volantesic):
     models = {}
     for model in model_names:
         model = model.text.lower().replace(" ", "-")
-        print(model)
+        # print(model)
         models[model] = {}
-    print(models)
+    # print(models)
     brands_models_volantesic[brand] = models
     return brands_models_volantesic
 
@@ -69,7 +69,8 @@ def get_dest_url(feats, brand, model):
 
     # closest year calculation
     preview_url = 'https://volantesic.pt/' + brand + '/' + model
-    # print(preview_url)
+    # # print(preview_url)
+    # print("preview_url " + preview_url)
     preview_r = requests.get(preview_url)
     soup = BeautifulSoup(preview_r.text, "html.parser")
     links = soup.find_all('p', {"class": "carBlockTitle"})
@@ -78,8 +79,12 @@ def get_dest_url(feats, brand, model):
     prev_year_interval = 100
     min_year = 100
     for link in links:
-        test_year = link.strong.text
-        # print(year)
+        try:
+            test_year = link.strong.text
+        except AttributeError as e: # NOVO element, it appears again, as a normal case, so, ignore is best solution
+            # # print(e)
+            continue
+        # # print(year)
         test_year = int(test_year)
         year_interval = abs(year - test_year)
         if year_interval < prev_year_interval:
@@ -90,7 +95,7 @@ def get_dest_url(feats, brand, model):
     year = min_year
 
     dest_url = 'https://volantesic.pt/' + brand + '/' + model + '/' + str(year) + '/' + used
-    # print(dest_url)
+    # # print(dest_url)
     return dest_url
 
 
@@ -106,11 +111,11 @@ def get_clean_feats(feats, type_c):
     src_feats_dict = feats.get_feats_dict()
     for feat_type in src_feats_dict:
         feat_val = src_feats_dict[feat_type]
-        # print(feat_type)
-        # print(feat_val)
+        # # print(feat_type)
+        # # print(feat_val)
         clean_feats[feat_type] = feats_assoc[feat_type][feat_val]
 
-    # print(clean_feats)
+    # # print(clean_feats)
     return clean_feats
 
 
@@ -122,16 +127,17 @@ def get_all_seleccione_buttons(url):
     """
 
     # this should be useful for olx maybe, but not used yet
+    # print("seleccione_buttons " + url)
     r = requests.get(url)
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
-        # print(soup)
+        # # print(soup)
 
         links = soup.find_all("a", string="Selecione")
         links = [link['href'] for link in links]
         links = ["https://volantesic.pt" + link.replace("opcoes", "preco") for link in links]
-        # print(links)
-        # print(len(
+        # # print(links)
+        # # print(len(
         #    links))  # all selecciones appear ate' os escondidos (alguns estao escondidos pelo seleccao das opcoes
 
 
@@ -140,18 +146,25 @@ def get_all_seleccione_text_and_button(url):
     :param url: ex: https://volantesic.pt/marcas-carros/jaguar/daimler/2008/usado/
     :return: all links attached to the selecione buttons
     """
+    # print("text_and_button " + url)
     r = requests.get(url)
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
-        # print(soup)
+        # # print(soup)
 
         seleccione_buttons = soup.find_all("a", string="Selecione")
         seleccione_text_association = {}
         for seleccione in seleccione_buttons:
-            version = seleccione.parent.parent.parent.find("div", {"class": "versionsListControls"}).p.text
-            features_text = seleccione.parent.p.text
+            version = seleccione.parent.parent.parent.find("div", {"class": "versionsListControls"}).p
+            # print(version)
+            # print("version_txt")
+            version = version.text
+            features_text = seleccione.parent.p
+            # print("feats_text")
+            # print(features_text)
+            features_text = features_text.text
             seleccione_text_association[seleccione] = [features_text, version]
-            # print(seleccione_text_association)
+            # # print(seleccione_text_association)
         return seleccione_text_association
 
 
@@ -167,17 +180,22 @@ def get_buttons_from_features(brand, model, feats, type_c):
     :return: returns list of all buttons associated with given feats and their score
     """
 
-    #print("new set of buttons for different car features")
+    ## print("new set of buttons for different car features")
     buttons = {}  # key: button, val: score
     url = get_dest_url(feats, brand, model)
+    # print("buttons_from_feat " + url)
     r = requests.get(url)
     t_year = -1
     if r.status_code == requests.codes.ok:
         soup = BeautifulSoup(r.text, "html.parser")
-        t_year = soup.find('span', {"itemprop": "releaseDate"}).text
-        #print("t_year: " + t_year)
+        t_year = soup.find('span', {"itemprop": "releaseDate"})
+        # print(t_year)
+        t_year = t_year.text
+        ## print("t_year: " + t_year)
     else:
-        print("error in request")
+        # print("error in request")
+        exception = FailedURLException(url)
+        raise exception
     t_year = int(t_year)
 
     feats_dict = get_clean_feats(feats, type_c)
@@ -194,9 +212,9 @@ def get_buttons_from_features(brand, model, feats, type_c):
     sel_buttons = get_all_seleccione_text_and_button(url)
 
     for sel in sel_buttons:
-        print()
-        print("next button")
-        print()
+        # print()
+        # print("next button")
+        # print()
         select = sel_buttons[sel]
         text = select[0]
 
@@ -250,7 +268,7 @@ def set_score(src_feats, dest_feats):
     t_doors = dest_feats.doors
     t_version = dest_feats.version
     '''
-    print("source \t dest" + "\n"
+    # print("source \t dest" + "\n"
           + segmento + "\t" + t_segmento + "\n"
           + str(cv) + "\t" + str(t_cv) + "cv" + "\n"
           + doors + "\t" + t_doors + "\n"
@@ -296,13 +314,13 @@ def set_score(src_feats, dest_feats):
                     if token in t_version:
                         score += 1
     if t_year == -1:
-        print("t_year=-1 error")
+        # print("t_year=-1 error")
         pass
     elif year == t_year:
         score += 5
     elif year - 2 < t_year < year + 2:
         score += 1
-    print("score: " + str(score))
+    # print("score: " + str(score))
     return score
 
 
@@ -360,17 +378,20 @@ def get_car_estimated_price(browser, url, car):
     base_value = soup.svg.find('tspan', string="Valor a Particular").parent
     base_value = base_value.find_all('tspan', text=True)
 
-    # print(base_value)
+    # # print("base_value")
+    # # print(base_value)
+    # print("base val tokens")
     for i in base_value:
+        # print(i)
         txt = unidecode.unidecode(i.text)
-        #print(txt)
+        ## print(txt)
         if "€" in txt:
             base_value = txt.replace("€", "")
             break
         elif "EUR" in txt:
             base_value = txt.replace("EUR", "")
     base_value = base_value.replace(" ", "").strip()
-    #print(base_value)
+    ## print(base_value)
     base_value = int(base_value)
     return base_value
 
@@ -391,6 +412,9 @@ def get_correct_estimate_prices(car_link_features, browser, dest):
     are not similar enough)
     the above in :return is done for all cars with the same features and estimated_price is set in all of them
     """
+    if car_link_features is None:
+        # print("car link feats is none in get_correct_estimate_prices")
+        return
     cars = car_link_features.get_cars()
     feats = car_link_features.get_feats()
     urls, max_score = feats.get_destination()
@@ -414,17 +438,20 @@ def get_all_cars_dest_url(brand, model, car_link_feats, type_c):
 
     """
 
-    print()
+    # print()
     features = car_link_feats.get_feats()
-    buttons = get_buttons_from_features(brand, model, features, type_c)
+    try:
+        buttons = get_buttons_from_features(brand, model, features, type_c)
+    except FailedURLException as e:
+        raise e
     max_score_buttons = []
     try:
         max_score, max_score_buttons = filter_buttons(buttons)
-        print()
-        print("max_score " + str(max_score))
-        # print("max_score buttons number: " + str(len(max_score_buttons)))
+        # print()
+        # print("max_score " + str(max_score))
+        # # print("max_score buttons number: " + str(len(max_score_buttons)))
     except MaxScoreTooLowForEvaluation as e:
-        print()
+        # print()
         e.get_score_error_msg()
         return
 
@@ -435,7 +462,7 @@ def get_all_cars_dest_url(brand, model, car_link_feats, type_c):
     links = urls
     links = [link.replace("opcoes", "preco") for link in links]
     urls = links
-    print(urls)
+    # print(urls)
     car_link_feats.set_destination(urls, max_score)
     return urls, max_score
 
@@ -447,11 +474,11 @@ def pickle_load():
 if __name__ == "__main__":
     brands_models_volantesic = {}
     if len(sys.argv) > 1:
-        print("arguments found")
+        # print("arguments found")
         if "-h" in sys.argv:
-            print
-            print("no args to use what we have")
-            print("-remake to get all from olx")
+            # print
+            # print("no args to use what we have")
+            # print("-remake to get all from olx")
             exit(0)
         if "-remake" not in sys.argv:
             try:
@@ -460,12 +487,12 @@ if __name__ == "__main__":
                 brands_models_volantesic = get_all_brands_and_models()
                 pickle_save(brands_models_volantesic)
         else:
-            print("remaking")
+            # print("remaking")
             brands_models_volantesic = get_all_brands_and_models()
             pickle_save(brands_models_volantesic)
     else:
-        print("no args")
+        # print("no args")
         brands_models_volantesic = pickle_load()
 
-    print(brands_models_volantesic)
-    print()
+    # print(brands_models_volantesic)
+    # print()

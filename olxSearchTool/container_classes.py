@@ -1,3 +1,6 @@
+import time
+
+
 class FeaturesContainer:
     # purpose is to be a container for given features, nothing else, all added values should default to None because
     # they might be used in a source or destination but not in the other
@@ -57,10 +60,20 @@ class OutputTextContainer:
            "price difference is: price_volantensic - price_standvirtual \n dest links are the links related " \
            "to the car at volantesic, might be more than one because the car may be similar to many options " \
            "from volantesc \n"
-        self.text += text
+        self.text += "\n" + text + "\n"
+        t = time.time()
+        self.h = hash(self.text + str(t))
+        self.text += self.h
 
     def add_text(self, text):
-        self.text += text
+        t = time.time()
+        self.text += "\n" + text + "\n****\n"
+        self.h = hash(self.text + str(t))
+        self.text += str(self.h)
 
     def get_text(self):
         return self.text
+
+    def verify_hash(self):
+        # TODO for a verify hashes tool
+        pass

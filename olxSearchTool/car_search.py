@@ -1,6 +1,7 @@
 import pickle
 import random
 import sys
+import traceback
 
 import requests
 from bs4 import BeautifulSoup
@@ -13,8 +14,12 @@ import olx_find_all_brands_and_models
 import compare_models
 import standv_find_all_brands_and_models
 import volantesic_find_all_brands_and_models
+from car_links_struct import FailedURLException
 from container_classes import SearchStatus, OutputTextContainer
 from pygame import mixer
+
+browser_reset_time = 700
+start_time = time.time()
 
 
 def get_source_dest_imports(source, dest):
@@ -100,27 +105,48 @@ def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_
     """
     :param brand:
     :param model:
-    :param browser:
+    :param browser: browser must be reset after x seconds
     :param type_c:
     :param output_list:
     :param dest_bool: makes the search happen regardless if the destination has already been searched or not
     :return: changes output list (list of lists (brand and model)) and saves lists (brand and model)
     """
 
+    global start_time
     source_import, dest_import = get_source_dest_imports_by_type_c(type_c)
     src, dest = get_source_and_dest_from_type_comp(type_c)
     t_list = source_import.get_cars(brand, model, type_c)  # gets new cars only (updates since last time)
     new = True
+    counter = len(t_list)
     for car_link_features in t_list:
+        counter -= 1
         if dest not in car_link_features.get_searched_dests() or dest_bool:  # different destination may get a higher
             # score
-            if new:  # only supposed to beep once
-
-                new_cars_alert()
+            if new:  # only supposed to beep once after saving new cars to readeable file
                 new = False
-            dest_import.get_all_cars_dest_url(brand, model, car_link_features, type_c)
+            try:
+                print("getting dest urls")
+                dest_import.get_all_cars_dest_url(brand, model, car_link_features, type_c)
+            except FailedURLException as e:
+                print("car links feats is none, no urls were fetched")
+                car_link_features = None
+            print("getting correct estimates")
             dest_import.get_correct_estimate_prices(car_link_features, browser, dest)
-            time.sleep(1)
+            elapsed_time = time.time() - start_time
+            print()
+            print("elapsed time since last browser restart " + str(elapsed_time))
+            if int(elapsed_time / browser_reset_time) > 0:
+                print()
+                print("restarting browser...")
+                start_time = time.time()
+                browser.quit()
+                browser = olx_find_all_brands_and_models.start_browser()
+                print("restarted")
+            else:
+                sleep = 3
+                print("sleeping for " + str(sleep))
+                print("number cars from source: " + str(len(t_list)) + " and cars remaining: " + str(counter))
+                time.sleep(sleep)
     try:
         car_link_features_list = pickle_load_cars(type_c, brand, model)
         car_link_features_list.add_car_link_feats_list_to_existing_set(t_list)
@@ -129,9 +155,13 @@ def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_
         print("could not load cars for brand: " + brand + " and model: " + model)
         pickle_save_all_car_feature_lists(t_list, type_c, brand, model)
 
-    save_prices(t_list, type_c)
+    save_prices(brand, model, t_list, type_c)
+    if not new:
+        new_cars_alert()
     if output_list is not None:
         output_list += [t_list]
+
+    return browser
 
 
 def update_cars(brand_model_list, type_c, browser):
@@ -157,7 +187,7 @@ def new_cars_alert():
     alert.play()
 
 
-def save_prices(car_link_feats_list, type_c):
+def save_prices(brand, model, car_link_feats_list, type_c):
     """
     purpose is to show prices for one given brand-model
     :param type_c:
@@ -185,16 +215,26 @@ def save_prices(car_link_feats_list, type_c):
                     + "\nurl:\n" + car.get_link() \
                     + "\ndest_links:\n" + dest_urls_text \
                     + "\n"
-    save_prices_to_file(type_c, text)
+    save_prices_to_file(brand, model, type_c, text)
 
 
-def save_prices_to_file(type_c, text):
+def save_prices_to_file(brand, model, type_c, text):
     """
+    saves to all cars file (history file)
+    saves to latest execution cars file, for each brand and model
     :param type_c:
     :return:
     """
     filename = "estimates/" + type_c
     t = text
+    t_temp = "the higher the score the better the more similiar was the car from standvirtual to the car " \
+             "at volantesic\n" \
+             "price difference is: price_volantensic - price_standvirtual \n dest links are the links related " \
+             "to the car at volantesic, might be more than one because the car may be similar to many options " \
+             "from volantesc \n" + t
+    t_temp += "\n" + "****\n" + str(hash(time.time()))
+    latest_cars_filename = "estimates/" + type_c + "_" + brand + "_" + model + "_" + "latest"
+    olx_find_all_brands_and_models.write_to_file_replace(latest_cars_filename, t_temp)
     try:
         obj = pickle_load_final_prices_obj(type_c)
         obj.add_text(t)
@@ -262,18 +302,23 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         print("arguments found")
-        if len(sys.argv) == 2:
+        if len(sys.argv) > 2:
             if "-h" in sys.argv:
                 print("-h for help")
                 print("-r to remake one car association")
                 print("no arguments to start where u left of")
-            elif "-r" in sys.argv:
+            elif "-resetdb" in sys.argv:
                 print("deleting all, run again to restart")
                 delete_database()
                 # everything will eventually remake itself
             elif "-status" in sys.argv:
                 print("updating status")
                 parse_status()
+            elif "-time" in sys.argv:
+                temp_t = sys.argv[2]
+                print("previous browser reset time: " + str(browser_reset_time) + "changing browser reset time to "
+                      + str(temp_t))
+                browser_reset_time = temp_t
             else:
                 print("invalid args")
         else:
@@ -286,18 +331,23 @@ if __name__ == "__main__":
         print("starting browser...")
         browser = olx_find_all_brands_and_models.start_browser()
         dict_of_list_for_all_sources_dests = {}
+        new = True
         try:
             for source in sources:
                 for dest in dests:
                     type_comp = source + "_" + dest
                     source_import, dest_import = get_source_dest_imports(source, dest)
                     compare_dict = get_compare_dict(type_comp)
+                    print(compare_dict)
                     list_of_all_lists_of_car_link_feats = []
-
-                    brands = ["abarth"]
+                    # TODO change brands and models to all brands and models and send
+                    brands = compare_dict
                     for brand in brands:
-                        models = ["500"]
+                        print(brand)
+                        models = compare_dict[brands]
+                        print(models)
                         for model in models:
+                            print(model)
                             brand = brand.lower()
                             model = model.lower()
                             print("next set of car_link_features")
@@ -307,11 +357,14 @@ if __name__ == "__main__":
                                 list_of_all_lists_of_car_link_feats += [lis]
                                 print("successfully loaded")
                             except (OSError, IOError) as e:
+                                if new:
+                                    start_time = time.time()
+                                    new = False
                                 print("could not load cars for brand: " + brand + " and model: " + model)
-                                remake_by_brand_model(brand, model, browser, type_comp,
-                                                      list_of_all_lists_of_car_link_feats)
-                            time.sleep(5)  # model
-                        time.sleep(5)  # brand
+                                browser = remake_by_brand_model(brand, model, browser, type_comp,
+                                                                list_of_all_lists_of_car_link_feats)
+                            time.sleep(3)
+                        time.sleep(3)  # brand
                     dict_of_list_for_all_sources_dests[type_comp] = list_of_all_lists_of_car_link_feats
         except Exception as e:
             print(e)
@@ -321,15 +374,16 @@ if __name__ == "__main__":
         print("finished initial full search")
         search_start = True  # bool to know if it's the search's first iteration or not
         status = load_search_status()
-        print("initial stats")
+        print("initial stats, restarts here")
         print(status)
-        time.sleep(3)
+        time.sleep(4)
 
         # car search loop
         try:
             while True:
                 for type_comp in dict_of_list_for_all_sources_dests:
                     if search_start:
+                        start_time = time.time()
                         if status is not None:
                             if type_comp != status.get_type_c():
                                 continue
@@ -349,14 +403,14 @@ if __name__ == "__main__":
                         print(status)
                         print("just saved new search results for brand: " + brand + " and model: " + model)
                         sleep = random.randint(10, 20)
-                        print("next brand-model list, (sleep " + str(sleep) + "secs)")
+                        print("sleeping for " + sleep)
                         time.sleep(sleep)
         except Exception as e:
-            print(e)
+            tb = traceback.format_exc()
             browser.quit()
-            exit()
-        browser.quit()
+            print(tb)
 
 # TODO test with bigger brand and models
+# make remotable (create thread that listens on a port and gets commands from it)
 # the idea is to check standvirtual, then olx, all sources..., sequentialy and check if there is a new one and
 #  add that new one to our structure and then compare to volantesic and all other destinations...,

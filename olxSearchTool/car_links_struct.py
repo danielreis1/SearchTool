@@ -70,6 +70,9 @@ class CarLinkFeaturesList:
     def __iter__(self):
         return iter(self.car_link_features_list)
 
+    def __len__(self):
+        return len(self.car_link_features_list)
+
     def get_brand(self):
         return self.brand
 
@@ -307,3 +310,12 @@ class MaxScoreTooLowForEvaluation(Exception):
 
     def get_score_error_msg(self):
         print("error max score too low: " + str(self.score))
+
+
+class FailedURLException(Exception):
+    def __init__(self, url):
+        self.url = url
+
+    def get_url(self):
+        stri = "failed url exception at\n" + self.url
+        return stri
