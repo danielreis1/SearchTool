@@ -17,8 +17,14 @@ def start_browser(headless=True):
     options.headless = headless
     # TODO change this paths to command line input or environment variable, and create script to initialize that
     #  variable
+
     profile_path = "/root/.mozilla/firefox/yy1okn6z.default"
     profile = webdriver.FirefoxProfile(profile_path)
+    profile.set_preference("browser.link.open_newwindow", 3)
+    profile.set_preference("browser.link.open_newwindow.restriction", 2)
+    profile.set_preference("browser.tabs.remote.autostart", False)
+    profile.set_preference("browser.tabs.remote.autostart.1", False)
+    profile.set_preference("browser.tabs.remote.autostart.2", False)
     firefox_binary_path = "/usr/bin/firefox"
     firefox_binary = FirefoxBinary(firefox_binary_path)
     browser = webdriver.Firefox(options=options, firefox_profile=profile, firefox_binary=firefox_binary)
