@@ -324,6 +324,16 @@ def get_comparison_type(src, dest):
         return "olx_volantesic"
 
 
+def autocomplete(dic):
+    for brand in dic:
+        for src_model in dic[brand]:
+            volantesic_model_list = dic[brand][src_model]
+            if isinstance(volantesic_model_list, list):
+                for dest_model_num in range(len(volantesic_model_list)):
+                    dic[brand][src_model] = None
+    return dic
+
+
 if __name__ == "__main__":
     if len(sys.argv) > 1:
         print("arguments found")
@@ -446,7 +456,7 @@ if __name__ == "__main__":
                 message = "showing all brands"
 
             elif inp == "auto":
-                # TODO autocomplete all source models that cant be compared anymore
+                autocomplete(dic)
                 message = "auto completing"
             else:
                 retry = True
