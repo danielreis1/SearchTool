@@ -18,8 +18,10 @@ from car_links_struct import FailedURLException
 from container_classes import SearchStatus, OutputTextContainer
 from pygame import mixer
 
-browser_reset_time = 700
+# --- global vars ---
+browser_reset_time = 400
 start_time = time.time()
+min_accepted_value = 0
 
 
 def get_source_dest_imports(source, dest):
@@ -101,7 +103,7 @@ def load_search_status():
         return None
 
 
-def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_bool=False):
+def remake_by_brand_model(brand, model, dest_model, browser, type_c, output_list=None, dest_bool=False):
     """
     :param brand:
     :param model:
@@ -124,9 +126,10 @@ def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_
             # score
             if new:  # only supposed to beep once after saving new cars to readeable file
                 new = False
+            # core code here
             try:
                 print("getting dest urls")
-                dest_import.get_all_cars_dest_url(brand, model, car_link_features, type_c)
+                dest_import.get_all_cars_dest_url(brand, dest_model, car_link_features, type_c)
             except FailedURLException as e:
                 print("car links feats is none, no urls were fetched")
                 car_link_features = None
@@ -135,6 +138,7 @@ def remake_by_brand_model(brand, model, browser, type_c, output_list=None, dest_
             elapsed_time = time.time() - start_time
             print()
             print("elapsed time since last browser restart " + str(elapsed_time))
+
             if int(elapsed_time / browser_reset_time) > 0:
                 print()
                 print("restarting browser...")
@@ -177,8 +181,13 @@ def update_cars(brand_model_list, type_c, browser):
     # source_import, dest_import = get_source_dest_imports_by_type_c(type_c)
     brand = brand_model_list.get_brand()
     model = brand_model_list.get_model()
+    compare_dict = get_compare_dict(type_c)
+    dest_model = compare_dict[brand][model]
+    if dest_model is None:
+        return False
     l = []
-    remake_by_brand_model(brand, model, browser, type_c, l, True)
+    remake_by_brand_model(brand, model, dest_model, browser, type_c, l, True)
+    return True
 
 
 def new_cars_alert():
@@ -194,6 +203,7 @@ def save_prices(brand, model, car_link_feats_list, type_c):
     :type car_link_feats_list CarLinkFeaturesList
     :return:
     """
+    global min_accepted_value
     text = ""
     for car_link_feats in car_link_feats_list:
         cars = car_link_feats.get_cars()
@@ -208,13 +218,16 @@ def save_prices(brand, model, car_link_feats_list, type_c):
             print("car link")
             # if car.is_good_estimation():
             estimation = car.get_estimation()
-            text += "-----\n" + "brand " + brand + " model " + model \
-                    + "\ncar version: " + version \
-                    + "\nprice difference: " + str(estimation) \
-                    + "\nmax score: " + str(max_score) \
-                    + "\nurl:\n" + car.get_link() \
-                    + "\ndest_links:\n" + dest_urls_text \
-                    + "\n"
+            if estimation > min_accepted_value:
+                text += "-----\n" + "brand " + brand + " model " + model \
+                        + "\ncar version: " + version \
+                        + "\nprice difference: " + str(estimation) \
+                        + "\nmax score: " + str(max_score) \
+                        + "\nurl:\n" + car.get_link() \
+                        + "\ndest_links:\n" + dest_urls_text \
+                        + "\n"
+            else:
+                continue
     save_prices_to_file(brand, model, type_c, text)
 
 
@@ -302,7 +315,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         print("arguments found")
-        if len(sys.argv) > 2:
+        if len(sys.argv) > 1:
             if "-h" in sys.argv:
                 print("-h for help")
                 print("-r to remake one car association")
@@ -319,6 +332,8 @@ if __name__ == "__main__":
                 print("previous browser reset time: " + str(browser_reset_time) + "changing browser reset time to "
                       + str(temp_t))
                 browser_reset_time = temp_t
+            elif "-val" in sys.argv:
+                min_accepted_value = sys.argv[2]
             else:
                 print("invalid args")
         else:
@@ -338,16 +353,19 @@ if __name__ == "__main__":
                     type_comp = source + "_" + dest
                     source_import, dest_import = get_source_dest_imports(source, dest)
                     compare_dict = get_compare_dict(type_comp)
-                    print(compare_dict)
                     list_of_all_lists_of_car_link_feats = []
-                    # TODO change brands and models to all brands and models and send
-                    brands = compare_dict
+                    brands = compare_models.autocomplete(compare_dict)
+                    # print(compare_dict)
                     for brand in brands:
-                        print(brand)
-                        models = compare_dict[brands]
-                        print(models)
-                        for model in models:
-                            print(model)
+                        print("brand: " + brand)
+                        src_models = compare_dict[brand]
+                        for model in src_models:
+                            dest_model = compare_dict[brand][model]
+                            if dest_model is None:
+                                continue
+                            print("source model: " + model)
+                            print("dest model" + dest_model)
+                            time.sleep(2)
                             brand = brand.lower()
                             model = model.lower()
                             print("next set of car_link_features")
@@ -361,7 +379,7 @@ if __name__ == "__main__":
                                     start_time = time.time()
                                     new = False
                                 print("could not load cars for brand: " + brand + " and model: " + model)
-                                browser = remake_by_brand_model(brand, model, browser, type_comp,
+                                browser = remake_by_brand_model(brand, model, dest_model, browser, type_comp,
                                                                 list_of_all_lists_of_car_link_feats)
                             time.sleep(3)
                         time.sleep(3)  # brand
@@ -397,7 +415,10 @@ if __name__ == "__main__":
                                 if brand != status.get_brand() and model != status.get_model():
                                     continue
                         search_start = False
-                        update_cars(brand_and_model_list, type_comp, browser)
+                        t_bol = update_cars(brand_and_model_list, type_comp, browser)
+                        if not t_bol:
+                            print("no dest model for source model in update cars")
+                            continue
                         save_search_status(brand, model, type_comp)
                         print("new stats")
                         print(status)
@@ -407,10 +428,9 @@ if __name__ == "__main__":
                         time.sleep(sleep)
         except Exception as e:
             tb = traceback.format_exc()
-            browser.quit()
             print(tb)
+            browser.quit()
 
-# TODO test with bigger brand and models
 # make remotable (create thread that listens on a port and gets commands from it)
 # the idea is to check standvirtual, then olx, all sources..., sequentialy and check if there is a new one and
 #  add that new one to our structure and then compare to volantesic and all other destinations...,
