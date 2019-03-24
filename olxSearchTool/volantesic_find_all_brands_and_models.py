@@ -6,6 +6,7 @@ from bs4 import BeautifulSoup
 import sys
 import pickle
 from selenium.webdriver.common.by import By
+from selenium.common.exceptions import WebDriverException
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import WebDriverWait
 
@@ -81,7 +82,7 @@ def get_dest_url(feats, brand, model):
     for link in links:
         try:
             test_year = link.strong.text
-        except AttributeError as e: # NOVO element, it appears again, as a normal case, so, ignore is best solution
+        except AttributeError as e:  # NOVO element, it appears again, as a normal case, so, ignore is best solution
             # # print(e)
             continue
         # # print(year)
@@ -356,43 +357,51 @@ def get_car_estimated_price(browser, url, car):
     browser.get(url)
 
     # press buy private
-    browser.find_element_by_id("tabBuyPrivate").click()
-    wait = WebDriverWait(browser, 10)
+    try:
+        wait = WebDriverWait(browser, 10)
+        element = wait.until(EC.element_to_be_clickable((By.ID, "tabBuyPrivate")))
+        element.click()
 
-    # press the button to change km
-    element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a[class=pricingMileageEdit]")))
-    element.click()
+        # press the button to change km
+        element = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "a[class=pricingMileageEdit]")))
+        element.click()
 
-    # input km number
-    element = wait.until(EC.element_to_be_clickable((By.ID, 'TextBoxKM')))
-    element.clear()
-    element.send_keys(km)
+        # input km number
+        element = wait.until(EC.element_to_be_clickable((By.ID, 'TextBoxKM')))
+        element.clear()
+        element.send_keys(km)
 
-    # press button to change km
-    browser.find_element_by_css_selector("a[onclick*='VehiclePrice.SaveTexBoxKMPricing']").click()
+        # press button to change km
+        browser.find_element_by_css_selector("a[onclick*='VehiclePrice.SaveTexBoxKMPricing']").click()
 
-    # get value to compare to
-    element = wait.until(
-        EC.presence_of_element_located((By.CSS_SELECTOR, 'svg[id*=drawSVG]')))  # wait for image to appear
-    soup = BeautifulSoup(browser.page_source, "html.parser")
-    base_value = soup.svg.find('tspan', string="Valor a Particular").parent
-    base_value = base_value.find_all('tspan', text=True)
+        # get value to compare to
+        wait.until(
+            EC.presence_of_element_located((By.CSS_SELECTOR, 'svg[id*=drawSVG]')))  # wait for svg image to appear
+    except WebDriverException as e:
+        base_value = -1
+        return base_value
+    try:
+        soup = BeautifulSoup(browser.page_source, "html.parser")
+        base_value = soup.svg.find('tspan', string="Valor a Particular").parent
+        base_value = base_value.find_all('tspan', text=True)
 
-    # # print("base_value")
-    # # print(base_value)
-    # print("base val tokens")
-    for i in base_value:
-        # print(i)
-        txt = unidecode.unidecode(i.text)
-        ## print(txt)
-        if "€" in txt:
-            base_value = txt.replace("€", "")
-            break
-        elif "EUR" in txt:
-            base_value = txt.replace("EUR", "")
-    base_value = base_value.replace(" ", "").strip()
-    ## print(base_value)
-    base_value = int(base_value)
+        # # print("base_value")
+        # # print(base_value)
+        # print("base val tokens")
+        for i in base_value:
+            # print(i)
+            txt = unidecode.unidecode(i.text)
+            ## printx(txt)
+            if "€" in txt:
+                base_value = txt.replace("€", "")
+                break
+            elif "EUR" in txt:
+                base_value = txt.replace("EUR", "")
+        base_value = base_value.replace(" ", "").strip()
+        ## print(base_value)
+        base_value = int(base_value)
+    except AttributeError as e:
+        base_value = -1
     return base_value
 
 

@@ -275,6 +275,9 @@ class Car:
         return diff
 
     def set_new_estimation(self, estimated_price, dest):
+        if estimated_price == -1:  # this indicates a problem when estimating price
+            self.estimated_price = 0
+            return
         print("set estimated_price " + str(estimated_price))
         if estimated_price > self.estimated_price:
             self.estimated_price = estimated_price

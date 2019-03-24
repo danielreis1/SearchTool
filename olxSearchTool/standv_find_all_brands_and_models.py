@@ -349,29 +349,43 @@ def get_features(url):
         else:
             used = "novo"
         # print(used)
-
-        km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
-        km = km.replace("km", "")
-        # print(km)
-        km = int(km)
-
-        fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
+        try:
+            km = soup.find('span', string="Quilómetros").parent.div.text.strip().replace(" ", "")
+            km = km.replace("km", "")
+            # print(km)
+            km = int(km)
+        except AttributeError:
+            km = 0
+        try:
+            fuel_type = soup.find('span', string="Combustível").parent.a.text.strip()
+        except AttributeError:
+            fuel_type = ""
         # print(fuel_type)
+        try:
+            year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
+            # print(year)
+            year = int(year)
+        except AttributeError:
+            year = 0
+        try:
+            cv = soup.find('span', string="Potência").parent.div.text.strip()
+            cv = cv.lower().replace("cv", "").replace(" ", "")
+            # print(cv)
+            cv = int(cv)
+        except AttributeError:
+            cv = 0
 
-        year = soup.find('span', string="Ano de Registo").parent.div.text.strip()
-        # print(year)
-        year = int(year)
+        try:
+            segmento = soup.find('span', string="Segmento").parent.div.text.strip()
+            segmento = segmento.lower()
+            # print(segmento)
+        except AttributeError:
+            segmento = ""
 
-        cv = soup.find('span', string="Potência").parent.div.text.strip()
-        cv = cv.lower().replace("cv", "").replace(" ", "")
-        # print(cv)
-        cv = int(cv)
-
-        segmento = soup.find('span', string="Segmento").parent.div.text.strip()
-        segmento = segmento.lower()
-        # print(segmento)
-
-        color = soup.find('span', string="Cor").parent.a.text.strip()
+        try:
+            color = soup.find('span', string="Cor").parent.a.text.strip()
+        except AttributeError:
+            color = ""
         # print(color)
         try:
             caixa_mudancas = soup.find('span', string="Tipo de Caixa").parent.a.text.strip()
@@ -395,7 +409,7 @@ def get_features(url):
         try:
             doors = soup.find('span', string="Nº de portas").parent.a.text.strip()
         except AttributeError:
-            doors = 4
+            doors = 4  # most usual, is this okay?
         # print(doors)
         feats = CarFeatures(used, fuel_type, year, cv, caixa_mudancas, traccao, segmento,
                             version, doors)
