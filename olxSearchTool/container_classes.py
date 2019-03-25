@@ -205,3 +205,17 @@ class TextHistorySet:
             if i.get_brand() == brand and i.get_model() == model:
                 return True
         return False
+
+
+class InitialStats:
+    def __init__(self, threshold):
+        """
+
+        :type threshold: int
+        """
+        self.threshold = threshold
+
+    def get_threshold(self) -> int:
+        return self.threshold
+
+# purpose of the file is to load all classes that are used just to contain data

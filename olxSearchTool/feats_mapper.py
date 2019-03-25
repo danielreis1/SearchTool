@@ -32,6 +32,8 @@ def from_type_c_to_src_and_dest(type_c):
         dest = "volantesic"
     else:
         print("error creating associations, src and dest invalid")
+        src = None
+        dest = None
     return src, dest
 
 

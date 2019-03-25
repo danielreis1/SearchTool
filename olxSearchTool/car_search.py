@@ -16,7 +16,7 @@ import standv_find_all_brands_and_models
 import user_view
 import volantesic_find_all_brands_and_models
 from car_links_struct import FailedURLException
-from container_classes import SearchStatus, OutputTextContainer, TextHistory, TextHistorySet
+from container_classes import SearchStatus, OutputTextContainer, TextHistory, TextHistorySet, InitialStats
 from pygame import mixer
 
 # --- global vars ---
@@ -92,6 +92,29 @@ def save_search_status(brand, model, type_comp):
     pickle.dump(stats, f_pickle)
     f_pickle.close()
     os.replace(file_temp, file)
+
+
+def save_config(t_temp):
+    file = "config"
+    file_temp = file + "temp"
+    obj = InitialStats(t_temp)
+    f_pickle = open(file_temp, "wb")
+    pickle.dump(obj, f_pickle)
+    f_pickle.close()
+    os.replace(file_temp, file)
+    return obj
+
+
+def load_config():
+    file = "config"
+    try:
+        f_pickle = open(file, "rb")
+        obj = pickle.load(f_pickle)
+        print("threshold is: " + str(obj.get_threshold()))
+        return obj
+    except (OSError, IOError) as e:
+        print("threshold not found, default value is -500")
+        return save_config(-500)
 
 
 def load_search_status():
@@ -210,7 +233,7 @@ def save_prices(brand, model, car_link_feats_list, type_c):
     :type car_link_feats_list CarLinkFeaturesList
     :return:
     """
-    global min_accepted_value
+    min_accepted_value = load_config()
     text = ""
     good_links = {}
     for car_link_feats in car_link_feats_list:
@@ -358,6 +381,7 @@ if __name__ == "__main__":
             elif "-threshold" in sys.argv:
                 print("type: '-threshold value' to set a new threshold value")
                 min_accepted_value = sys.argv[2]
+                save_config(min_accepted_value)
             else:
                 print("invalid args")
         else:
@@ -365,6 +389,7 @@ if __name__ == "__main__":
 
     else:
         print("no arguments")
+        load_config()
         sources = ["standv"]  # , "olx"]
         dests = ["volantesic"]
         print("starting browser...")

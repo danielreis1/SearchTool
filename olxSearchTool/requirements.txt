@@ -1,0 +1,5 @@
+unidecode
+pygame
+beautifulsoup4
+requests
+selenium
