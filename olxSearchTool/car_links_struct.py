@@ -135,11 +135,11 @@ class CarLinkFeatures:
         return hash(str(self.features))
 
     def add_car(self, price, km, link, color):
-        self.cars.add(Car(price, km, link, color))
+        self.cars.add(Car(km, price, link, color))
 
     def remove_car(self, link):
         # this should remove car with link, because link is what defines a car
-        self.cars.remove(Car(0, 0, link, "red"))  # check if this works
+        self.cars.remove(Car(0, 0, link, "red"))  # TODO check if this works
 
     def get_cars(self):
         return self.cars
@@ -266,7 +266,7 @@ class Car:
             return False
 
     def get_estimation(self):
-        # print("estimated_price " + str(self.estimated_price) + " price " + str(self.price))
+        print("estimated_price " + str(self.estimated_price) + " price " + str(self.price))
         diff = self.estimated_price - self.price
         if self.estimated_price == 0:
             print("score was not big enough, price not set, it's zero")
