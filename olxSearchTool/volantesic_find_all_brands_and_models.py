@@ -400,6 +400,9 @@ def get_car_estimated_price(browser, url, car):
         base_value = base_value.replace(" ", "").strip()
         ## print(base_value)
         base_value = int(base_value)
+        print("base value")
+        print(url)
+        print(str(base_value))
     except AttributeError as e:
         base_value = -1
     return base_value

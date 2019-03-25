@@ -13,15 +13,16 @@ import os
 import olx_find_all_brands_and_models
 import compare_models
 import standv_find_all_brands_and_models
+import user_view
 import volantesic_find_all_brands_and_models
 from car_links_struct import FailedURLException
-from container_classes import SearchStatus, OutputTextContainer
+from container_classes import SearchStatus, OutputTextContainer, TextHistory, TextHistorySet
 from pygame import mixer
 
 # --- global vars ---
 browser_reset_time = 400
 start_time = time.time()
-min_accepted_value = 0
+min_accepted_value = -500
 
 
 def get_source_dest_imports(source, dest):
@@ -62,7 +63,9 @@ def get_source_dest_imports_by_type_c(type_c):
 
 
 def get_compare_dict(type_c):
-    return compare_models.load_comparison_dic(type_c)
+    t_d = compare_models.load_comparison_dic(type_c)
+    # autocompletes to avoid problems
+    return compare_models.autocomplete(t_d)
 
 
 def pickle_save_all_car_feature_lists(all_car_features_lists, type_c, brand, model):
@@ -160,8 +163,8 @@ def remake_by_brand_model(brand, model, dest_model, browser, type_c, output_list
         pickle_save_all_car_feature_lists(t_list, type_c, brand, model)
 
     save_prices(brand, model, t_list, type_c)
-    if not new:
-        new_cars_alert()
+    # if not new:
+    # new_cars_alert()
     if output_list is not None:
         output_list += [t_list]
 
@@ -191,6 +194,10 @@ def update_cars(brand_model_list, type_c, browser):
 
 
 def new_cars_alert():
+    """
+    ringing only if new car with a good enough price comes in
+    :return:
+    """
     mixer.init()  # you must initialize the mixer
     alert = mixer.Sound('bell.wav')
     alert.play()
@@ -205,6 +212,7 @@ def save_prices(brand, model, car_link_feats_list, type_c):
     """
     global min_accepted_value
     text = ""
+    good_links = {}
     for car_link_feats in car_link_feats_list:
         cars = car_link_feats.get_cars()
         feats = car_link_feats.get_feats()
@@ -213,28 +221,35 @@ def save_prices(brand, model, car_link_feats_list, type_c):
         max_score = car_link_feats.get_max_score()
         dest_urls_text = ""
         for i in dest_urls:
-            dest_urls_text += i
+            dest_urls_text += i + "\n"
         for car in cars:
             print("car link")
             # if car.is_good_estimation():
             estimation = car.get_estimation()
             if estimation > min_accepted_value:
+                new_cars_alert()
+                link = car.get_link()
+                good_links[link] = dest_urls
                 text += "-----\n" + "brand " + brand + " model " + model \
                         + "\ncar version: " + version \
                         + "\nprice difference: " + str(estimation) \
                         + "\nmax score: " + str(max_score) \
-                        + "\nurl:\n" + car.get_link() \
+                        + "\nurl:\n" + link \
                         + "\ndest_links:\n" + dest_urls_text \
                         + "\n"
             else:
                 continue
-    save_prices_to_file(brand, model, type_c, text)
+    save_prices_to_file(brand, model, type_c, text, good_links)
 
 
-def save_prices_to_file(brand, model, type_c, text):
+def save_prices_to_file(brand, model, type_c, text, links):
     """
     saves to all cars file (history file)
     saves to latest execution cars file, for each brand and model
+    :param links: good links to be saved to associated brand and model datastruct history of good links
+    :param brand:
+    :param model:
+    :param text:
     :param type_c:
     :return:
     """
@@ -248,6 +263,25 @@ def save_prices_to_file(brand, model, type_c, text):
     t_temp += "\n" + "****\n" + str(hash(time.time()))
     latest_cars_filename = "estimates/" + type_c + "_" + brand + "_" + model + "_" + "latest"
     olx_find_all_brands_and_models.write_to_file_replace(latest_cars_filename, t_temp)
+
+    # user_view files
+    try:
+        obj = user_view.load_history_set()
+        if obj.history_exists(brand, model):
+            prev_hist = obj.get_hist(brand, model)
+            for l in links:
+                prev_hist.add_link(l, links[l])
+            obj.set_hist(prev_hist)
+        else:
+            text_hist = TextHistory(brand, model, links)
+            obj.set_hist(text_hist)
+    except (OSError, IOError) as e:
+        text_hist = TextHistory(brand, model, links)
+        t_lis = [text_hist]
+        obj = TextHistorySet(t_lis)
+    user_view.save_history_set(obj)
+
+    # text files
     try:
         obj = pickle_load_final_prices_obj(type_c)
         obj.add_text(t)
@@ -274,18 +308,6 @@ def pickle_load_final_prices_obj(type_c):
     return pickle.load(f_pickle)
 
 
-def show_new_good_prices(dict_of_lists, browser):
-    # TODO this could open all new stuff in browser
-    """
-    output all good price's links to file
-    output format: \n brand, model, price, link + blank line to put "done" or "ok" or "wrong" or after checking the link \n
-    :return:
-    """
-    for type_c in dict_of_lists:
-        for list_of_brands_models_car_links in dict_of_lists[type_c]:
-            pass
-
-
 def parse_status():
     # TODO
     """
@@ -300,9 +322,11 @@ def delete_database():
     mydir1 = "textFiles/carFeaturesList"
     mydir2 = "textFiles/carLinksStructs"
     mydir3 = "estimates"
+    mydir4 = "estimates_history"
     aux_delete_db(mydir1)
     aux_delete_db(mydir2)
     aux_delete_db(mydir3)
+    aux_delete_db(mydir4)
 
 
 def aux_delete_db(mdir):
@@ -312,7 +336,6 @@ def aux_delete_db(mdir):
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) > 1:
         print("arguments found")
         if len(sys.argv) > 1:
@@ -320,7 +343,7 @@ if __name__ == "__main__":
                 print("-h for help")
                 print("-r to remake one car association")
                 print("no arguments to start where u left of")
-            elif "-resetdb" in sys.argv:
+            elif "-cleardb" in sys.argv:
                 print("deleting all, run again to restart")
                 delete_database()
                 # everything will eventually remake itself
@@ -332,7 +355,8 @@ if __name__ == "__main__":
                 print("previous browser reset time: " + str(browser_reset_time) + "changing browser reset time to "
                       + str(temp_t))
                 browser_reset_time = temp_t
-            elif "-val" in sys.argv:
+            elif "-threshold" in sys.argv:
+                print("type: '-threshold value' to set a new threshold value")
                 min_accepted_value = sys.argv[2]
             else:
                 print("invalid args")
@@ -355,16 +379,18 @@ if __name__ == "__main__":
                     compare_dict = get_compare_dict(type_comp)
                     list_of_all_lists_of_car_link_feats = []
                     brands = compare_models.autocomplete(compare_dict)
+                    # brands = ["abarth"]
                     # print(compare_dict)
                     for brand in brands:
                         print("brand: " + brand)
                         src_models = compare_dict[brand]
+                        # src_models = ["500c"]
                         for model in src_models:
                             dest_model = compare_dict[brand][model]
                             if dest_model is None:
                                 continue
                             print("source model: " + model)
-                            print("dest model" + dest_model)
+                            print("dest model: " + dest_model)
                             time.sleep(2)
                             brand = brand.lower()
                             model = model.lower()
@@ -424,7 +450,7 @@ if __name__ == "__main__":
                         print(status)
                         print("just saved new search results for brand: " + brand + " and model: " + model)
                         sleep = random.randint(10, 20)
-                        print("sleeping for " + sleep)
+                        print("sleeping for " + str(sleep))
                         time.sleep(sleep)
         except Exception as e:
             tb = traceback.format_exc()

@@ -6,7 +6,7 @@ class CarLinksStruct:
         self.brand = brand
         self.model = model
         self.links = set()
-        self.add_links(links)
+        self.add_links(links.copy())
         self.max_number_pages = max_number_pages
 
     def get_brand(self):
@@ -22,6 +22,7 @@ class CarLinksStruct:
         return self.max_number_pages
 
     def add_links(self, links):
+        links = links.copy()
         if len(links) != 0:
             for i in links:
                 self.links.add(i)
@@ -46,13 +47,13 @@ class CarLinkFeaturesList:
 
         if car_link_features_list is None:
             car_link_features_list = []
-        self.car_link_features_list = set(car_link_features_list)
+        self.car_link_features_list = set(car_link_features_list.copy())
         self.brand = brand
         self.model = model
 
         if max_pages is None:
             max_pages = {}
-        self.max_pages = max_pages
+        self.max_pages = max_pages.copy()
 
     def __str__(self):
         return self.brand + "\n" \
@@ -114,9 +115,9 @@ class CarLinkFeatures:
         :type features: CarFeatures
         """
         if searched_dests is None:
-            searched_dests = []
+            searched_dests = set()
         if cars is None:
-            cars = set()
+            cars = []
         self.cars = set(cars)
         self.features = features
         self.searched_dests = searched_dests
@@ -139,7 +140,7 @@ class CarLinkFeatures:
 
     def remove_car(self, link):
         # this should remove car with link, because link is what defines a car
-        self.cars.remove(Car(0, 0, link, "red"))  # TODO check if this works
+        self.cars.remove(Car(0, 0, link, "red"))
 
     def get_cars(self):
         return self.cars
@@ -159,7 +160,7 @@ class CarLinkFeatures:
         self.features.set_destination(urls, max_score)
 
     def add_searched_dest(self, searched_dest):
-        self.searched_dests += [searched_dest]
+        self.searched_dests.add(searched_dest)
 
     def get_searched_dests(self):
         return self.searched_dests
@@ -241,9 +242,13 @@ class Car:
         self.color = color
         if estimated_price is None:
             self.estimated_price = 0
+        else:
+            self.estimated_price = estimated_price
         if estimated_price_history is None:
             estimated_price_history = {}
-        self.estimated_price_history = estimated_price_history
+            self.estimated_price_history = estimated_price_history
+        else:
+            self.estimated_price_history = estimated_price_history.copy()
 
     def __eq__(self, other):
         return self.link == other.link
